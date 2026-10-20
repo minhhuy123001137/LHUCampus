@@ -335,6 +335,24 @@ button {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Modern Letter Avatar (Chữ cái sinh viên) */
+.avatar-letter {
+  background: linear-gradient(135deg, #0b3b60 0%, #0284c7 60%, #ff6b00 100%);
+  color: #ffffff !important;
+  font-family: 'Lexend', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  line-height: 1;
+  text-transform: uppercase;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(11, 59, 96, 0.25);
+  border: 2px solid #ffffff;
 }
 
 .nav-user-info {

@@ -118,27 +118,54 @@ const LHUCampus = {
     }
   },
 
-  // Profile Data Sync Across Header & Pages
+  // Extract Letter from Vietnamese/International Name
+  getInitial(name) {
+    if (!name) return 'A';
+    const parts = name.trim().split(/\s+/);
+    const lastName = parts[parts.length - 1];
+    return lastName.charAt(0).toUpperCase();
+  },
+
+  // Profile Data Sync Across Header & Pages (Letter Avatar)
   syncProfileData() {
     const savedData = localStorage.getItem('lhu_student_profile');
-    if (!savedData) return;
-
-    try {
-      const student = JSON.parse(savedData);
-      // Update navbar user pill
-      const navAvatar = document.querySelector('.nav-user-avatar');
-      const navName = document.querySelector('.nav-user-name');
-      if (navAvatar && student.avatar) navAvatar.src = student.avatar;
-      if (navName && student.name) navName.textContent = student.name;
-
-      // Update welcome banner on dashboard if present
-      const welcomeName = document.getElementById('welcomeStudentName');
-      const welcomeAvatar = document.getElementById('welcomeStudentAvatar');
-      if (welcomeName && student.name) welcomeName.textContent = student.name;
-      if (welcomeAvatar && student.avatar) welcomeAvatar.src = student.avatar;
-    } catch (e) {
-      console.warn('Could not sync profile data:', e);
+    let student = null;
+    if (savedData) {
+      try {
+        student = JSON.parse(savedData);
+      } catch (e) {
+        console.warn('Could not parse student profile');
+      }
     }
+    if (!student && window.CAMPUS_MOCK_DATA) {
+      student = window.CAMPUS_MOCK_DATA.studentSummary;
+    }
+    if (!student) return;
+
+    const initial = this.getInitial(student.name);
+
+    // Update all navbar avatars with letter
+    const navAvatars = document.querySelectorAll('.nav-user-avatar');
+    navAvatars.forEach(av => {
+      av.textContent = initial;
+      av.classList.add('avatar-letter');
+    });
+
+    const navName = document.querySelector('.nav-user-name');
+    if (navName && student.name) navName.textContent = student.name;
+
+    // Update welcome banner on dashboard if present
+    const welcomeName = document.getElementById('welcomeStudentName');
+    const welcomeAvatar = document.getElementById('welcomeStudentAvatar');
+    if (welcomeName && student.name) welcomeName.textContent = student.name;
+    if (welcomeAvatar) {
+      welcomeAvatar.textContent = initial;
+      welcomeAvatar.classList.add('avatar-letter');
+    }
+
+    // Update profile banner letter if present
+    const bannerLetter = document.getElementById('bannerAvatarLetter');
+    if (bannerLetter) bannerLetter.textContent = initial;
   },
 
   // Fetch Open API Weather for Bien Hoa (Campus location)

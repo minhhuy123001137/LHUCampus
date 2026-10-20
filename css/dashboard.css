@@ -174,6 +174,20 @@
   object-fit: cover;
   border: 3px solid var(--bg-surface);
   box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.welcome-avatar.avatar-letter {
+  background: linear-gradient(135deg, #0b3b60 0%, #165688 50%, var(--accent) 100%);
+  color: #ffffff;
+  font-family: 'Lexend', sans-serif;
+  font-weight: 800;
+  font-size: 1.65rem;
+  box-shadow: var(--shadow-md);
+  user-select: none;
 }
 
 .welcome-online-dot {

@@ -68,9 +68,9 @@
           <i class="fa-solid fa-moon"></i>
         </button>
 
-        <!-- User Profile Pill -->
+        <!-- User Profile Pill (Letter Avatar) -->
         <a href="profile.html" class="nav-user-pill" title="Hồ sơ của tôi">
-          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar sinh viên" class="nav-user-avatar">
+          <div class="nav-user-avatar avatar-letter">A</div>
           <div class="nav-user-info">
             <span class="nav-user-name">Nguyễn Văn An</span>
             <span class="nav-user-role">MSSV: 22DTH0124</span>
@@ -121,12 +121,9 @@
       <div class="profile-banner-body">
         
         <div class="profile-avatar-group">
-          <div class="profile-avatar-wrapper">
-            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Ảnh chân dung sinh viên" class="profile-avatar-img" id="bannerAvatarImg">
-            <label for="avatarFileInput" class="avatar-upload-btn" title="Thay đổi ảnh đại diện">
-              <i class="fa-solid fa-camera"></i> Đổi ảnh
-            </label>
-            <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
+          <div class="profile-avatar-wrapper" title="Ảnh đại diện tạo tự động theo chữ cái đầu tên sinh viên">
+            <div class="profile-avatar-letter" id="bannerAvatarLetter">A</div>
+            <div class="avatar-letter-badge"><i class="fa-solid fa-font"></i> Chữ cái</div>
           </div>
 
           <div class="profile-identity">

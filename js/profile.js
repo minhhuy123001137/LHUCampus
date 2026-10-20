@@ -99,24 +99,48 @@ function updateBannerDisplay(student) {
   const bannerName = document.getElementById('bannerStudentName');
   const bannerId = document.getElementById('bannerStudentId');
   const bannerFaculty = document.getElementById('bannerFaculty');
-  const bannerAvatar = document.getElementById('bannerAvatarImg');
+  const bannerLetter = document.getElementById('bannerAvatarLetter');
 
   if (bannerName) bannerName.textContent = student.name;
   if (bannerId) bannerId.textContent = `MSSV: ${student.studentId}`;
   if (bannerFaculty) bannerFaculty.textContent = student.faculty;
-  if (bannerAvatar && student.avatar) bannerAvatar.src = student.avatar;
 
-  // Also update Global navbar
-  const navAvatar = document.querySelector('.nav-user-avatar');
+  const parts = (student.name || 'An').trim().split(/\s+/);
+  const initial = parts[parts.length - 1].charAt(0).toUpperCase();
+
+  if (bannerLetter) bannerLetter.textContent = initial;
+
+  // Also update Global navbar letter avatars
+  const navAvatars = document.querySelectorAll('.nav-user-avatar');
+  navAvatars.forEach(av => {
+    av.textContent = initial;
+    av.classList.add('avatar-letter');
+  });
+
   const navName = document.querySelector('.nav-user-name');
-  if (navAvatar && student.avatar) navAvatar.src = student.avatar;
   if (navName && student.name) navName.textContent = student.name;
 }
 
-// Setup Form Validation
+// Setup Form Validation & Live Letter Avatar Update
 function setupValidation() {
   const form = document.getElementById('studentProfileForm');
   if (!form) return;
+
+  // Live letter avatar update as student types their name
+  const nameInput = document.getElementById('inputFullName');
+  if (nameInput) {
+    nameInput.addEventListener('input', () => {
+      const val = nameInput.value.trim();
+      if (val) {
+        const parts = val.split(/\s+/);
+        const letter = parts[parts.length - 1].charAt(0).toUpperCase();
+        const bannerLetter = document.getElementById('bannerAvatarLetter');
+        if (bannerLetter) bannerLetter.textContent = letter;
+        const navAvatars = document.querySelectorAll('.nav-user-avatar');
+        navAvatars.forEach(av => { av.textContent = letter; });
+      }
+    });
+  }
 
   const fields = [
     { id: 'inputFullName', regex: REGEX_PATTERNS.name, msg: 'Họ và tên phải có ít nhất 2 từ và chỉ chứa chữ cái.' },
@@ -236,42 +260,18 @@ function setupValidation() {
   });
 }
 
-// Setup Avatar Upload with Instant FileReader Preview
+// Setup Avatar (Letter Avatar Mode)
 function setupAvatarUpload() {
-  const fileInput = document.getElementById('avatarFileInput');
-  const bannerImg = document.getElementById('bannerAvatarImg');
-  const navAvatar = document.querySelector('.nav-user-avatar');
+  const avatarWrapper = document.querySelector('.profile-avatar-wrapper');
+  if (!avatarWrapper) return;
 
-  if (!fileInput) return;
-
-  fileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    if (!file.type.startsWith('image/')) {
-      LHUCampus.toast('Tệp không hợp lệ', 'Vui lòng chọn tệp hình ảnh (.jpg, .png, .jpeg)', 'warning');
-      return;
-    }
-
-    if (file.size > 3 * 1024 * 1024) {
-      LHUCampus.toast('Kích thước quá lớn', 'Kích thước ảnh không được vượt quá 3MB', 'warning');
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      const base64Img = event.target.result;
-      if (bannerImg) bannerImg.src = base64Img;
-      if (navAvatar) navAvatar.src = base64Img;
-
-      // Save to localStorage
-      const profile = JSON.parse(localStorage.getItem('lhu_student_profile') || '{}');
-      profile.avatar = base64Img;
-      localStorage.setItem('lhu_student_profile', JSON.stringify(profile));
-
-      LHUCampus.toast('Đổi ảnh đại diện', 'Ảnh đại diện mới đã được cập nhật thành công!', 'success');
-    };
-    reader.readAsDataURL(file);
+  avatarWrapper.addEventListener('click', () => {
+    LHUCampus.toast(
+      'Avatar Chữ Cái',
+      'Ảnh đại diện sinh viên được tạo tự động bằng chữ cái đầu của tên và đồng bộ toàn hệ thống!',
+      'info',
+      4000
+    );
   });
 }
 

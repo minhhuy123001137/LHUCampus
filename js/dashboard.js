@@ -83,7 +83,12 @@ function renderStudentSummary(student) {
 
   if (welcomeName) welcomeName.textContent = student.name;
   if (welcomeMajor) welcomeMajor.textContent = `${student.major} • Khóa ${student.academicYear}`;
-  if (welcomeAvatar) welcomeAvatar.src = student.avatar;
+  if (welcomeAvatar) {
+    const parts = (student.name || 'An').trim().split(/\s+/);
+    const initial = parts[parts.length - 1].charAt(0).toUpperCase();
+    welcomeAvatar.textContent = initial;
+    welcomeAvatar.classList.add('avatar-letter');
+  }
 }
 
 // Render Next Upcoming Class
