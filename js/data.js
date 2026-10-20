@@ -1,6 +1,6 @@
 /* ===================================================
    LHU CAMPUS - CLIENT DATA SOURCE (FALLBACK FOR FILE:// PROTOCOL)
-   Guarantees 100% operation on both HTTP servers & direct double-click
+   Includes all 5 Academic Management Subsystems (Portal Data)
    =================================================== */
 
 window.CAMPUS_MOCK_DATA = {
@@ -24,6 +24,243 @@ window.CAMPUS_MOCK_DATA = {
     "academicRanking": "Giỏi",
     "tuitionStatus": "Đã thanh toán (HK1 2026-2027)",
     "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80"
+  },
+  "learningPath": {
+    "curriculum": {
+      "totalCredits": 135,
+      "accumulatedCredits": 88,
+      "percentComplete": 65.2,
+      "generalCredits": { "completed": 28, "total": 28, "label": "Khối kiến thức đại cương" },
+      "fundamentalCredits": { "completed": 36, "total": 40, "label": "Khối kiến thức cơ sở ngành" },
+      "specializedCredits": { "completed": 24, "total": 67, "label": "Khối kiến thức chuyên ngành & Tốt nghiệp" }
+    },
+    "semesters": [
+      { "semester": "HK1 (22-23)", "gpa4": 3.32, "gpa10": 8.05, "credits": 17, "rank": "Giỏi" },
+      { "semester": "HK2 (22-23)", "gpa4": 3.48, "gpa10": 8.35, "credits": 19, "rank": "Giỏi" },
+      { "semester": "HK1 (23-24)", "gpa4": 3.65, "gpa10": 8.78, "credits": 18, "rank": "Xuất sắc" },
+      { "semester": "HK2 (23-24)", "gpa4": 3.55, "gpa10": 8.60, "credits": 18, "rank": "Giỏi" },
+      { "semester": "HK1 (24-25)", "gpa4": 3.72, "gpa10": 8.95, "credits": 16, "rank": "Xuất sắc" },
+      { "semester": "HK2 (24-25)", "gpa4": 3.60, "gpa10": 8.70, "credits": 18, "rank": "Xuất sắc" },
+      { "semester": "HK1 (25-26)", "gpa4": 3.58, "gpa10": 8.65, "credits": 17, "rank": "Giỏi" }
+    ],
+    "historicalGrades": [
+      { "code": "IT101", "name": "Nhập môn Lập trình C/C++", "credits": 3, "grade10": 8.8, "gradeLetter": "A", "grade4": 4.0, "semester": "HK1" },
+      { "code": "IT102", "name": "Toán Rời rạc & Lý thuyết Đồ thị", "credits": 3, "grade10": 8.2, "gradeLetter": "B+", "grade4": 3.5, "semester": "HK1" },
+      { "code": "IT201", "name": "Cấu trúc Dữ liệu & Giải thuật", "credits": 4, "grade10": 9.0, "gradeLetter": "A", "grade4": 4.0, "semester": "HK2" },
+      { "code": "IT205", "name": "Cơ sở Dữ liệu Quan hệ & SQL", "credits": 3, "grade10": 8.5, "gradeLetter": "A", "grade4": 4.0, "semester": "HK2" },
+      { "code": "IT301", "name": "Lập trình Hướng đối tượng Java", "credits": 4, "grade10": 8.0, "gradeLetter": "B+", "grade4": 3.5, "semester": "HK3" },
+      { "code": "IT305", "name": "Lập trình Web Nâng Cao", "credits": 3, "grade10": 9.2, "gradeLetter": "A", "grade4": 4.0, "semester": "HK4" },
+      { "code": "IT412", "name": "Trí tuệ Nhân tạo & Deep Learning", "credits": 4, "grade10": 8.6, "gradeLetter": "A", "grade4": 4.0, "semester": "HK5" },
+      { "code": "IT320", "name": "Kiến trúc & Thiết kế Phần mềm", "credits": 3, "grade10": 7.8, "gradeLetter": "B", "grade4": 3.0, "semester": "HK5" }
+    ]
+  },
+  "attendanceData": {
+    "currentWeek": 8,
+    "totalWeeks": 15,
+    "absenceLimitPercent": 20,
+    "subjects": [
+      {
+        "id": "att-01",
+        "code": "IT305",
+        "name": "Lập trình Web Nâng Cao & Cloud",
+        "totalSessions": 15,
+        "conductedSessions": 8,
+        "attendedSessions": 8,
+        "absentSessions": 0,
+        "lecturer": "ThS. Trần Quang Huy"
+      },
+      {
+        "id": "att-02",
+        "code": "IT412",
+        "name": "Trí tuệ Nhân tạo & Deep Learning",
+        "totalSessions": 15,
+        "conductedSessions": 8,
+        "attendedSessions": 7,
+        "absentSessions": 1,
+        "lecturer": "TS. Hoàng Đức Long"
+      },
+      {
+        "id": "att-03",
+        "code": "IT320",
+        "name": "Kiến trúc & Thiết kế Phần mềm",
+        "totalSessions": 15,
+        "conductedSessions": 8,
+        "attendedSessions": 6,
+        "absentSessions": 2,
+        "lecturer": "ThS. Lê Thị Mai Phương"
+      },
+      {
+        "id": "att-04",
+        "code": "EN203",
+        "name": "Tiếng Anh Giao tiếp Chuyên nghiệp",
+        "totalSessions": 15,
+        "conductedSessions": 8,
+        "attendedSessions": 5,
+        "absentSessions": 3,
+        "lecturer": "ThS. Michael Anderson"
+      }
+    ],
+    "timetable": [
+      {
+        "day": "Thứ Hai",
+        "date": "20/10/2026",
+        "sessions": [
+          { "period": "Ca 1 (07:30 - 09:30)", "subject": "Lập trình Web Nâng Cao", "code": "IT305", "room": "Lab 402 CS2", "status": "present", "badge": "Có mặt" },
+          { "period": "Ca 2 (09:45 - 11:45)", "subject": "Thực hành Cloud AWS/GCP", "code": "IT305", "room": "Lab 402 CS2", "status": "present", "badge": "Có mặt" }
+        ]
+      },
+      {
+        "day": "Thứ Ba",
+        "date": "21/10/2026",
+        "sessions": [
+          { "period": "Ca 3 (13:00 - 15:00)", "subject": "Trí tuệ Nhân tạo & Deep Learning", "code": "IT412", "room": "Phòng A301 CS1", "status": "present", "badge": "Có mặt" },
+          { "period": "Ca 4 (15:15 - 17:15)", "subject": "Thực hành AI Model Lab", "code": "IT412", "room": "Phòng AI CS1", "status": "absent", "badge": "Vắng mặt" }
+        ]
+      },
+      {
+        "day": "Thứ Tư",
+        "date": "22/10/2026",
+        "sessions": [
+          { "period": "Ca 1 (07:30 - 09:30)", "subject": "Tiếng Anh Giao tiếp Chuyên nghiệp", "code": "EN203", "room": "C401 CS1", "status": "absent", "badge": "Vắng mặt" },
+          { "period": "Ca 2 (09:45 - 11:45)", "subject": "Thuyết trình & Hùng biện Tiếng Anh", "code": "EN203", "room": "C401 CS1", "status": "absent", "badge": "Vắng mặt" }
+        ]
+      },
+      {
+        "day": "Thứ Năm",
+        "date": "23/10/2026",
+        "sessions": [
+          { "period": "Ca 1 (07:30 - 09:30)", "subject": "Kiến trúc & Thiết kế Phần mềm", "code": "IT320", "room": "B205 CS2", "status": "present", "badge": "Có mặt" },
+          { "period": "Ca 2 (09:45 - 11:45)", "subject": "Thực hành Design Pattern UML", "code": "IT320", "room": "Lab 205 CS2", "status": "present", "badge": "Có mặt" }
+        ]
+      },
+      {
+        "day": "Thứ Sáu",
+        "date": "24/10/2026",
+        "sessions": [
+          { "period": "Ca 3 (13:00 - 15:00)", "subject": "Khởi nghiệp Đổi mới Sáng tạo", "code": "BA201", "room": "Hội trường CS1", "status": "present", "badge": "Có mặt" }
+        ]
+      },
+      {
+        "day": "Thứ Bảy",
+        "date": "25/10/2026",
+        "sessions": [
+          { "period": "Ca 1 (07:30 - 11:30)", "subject": "Sinh hoạt CLB Robocon Lạc Hồng", "code": "CLB-ROBO", "room": "Xưởng Robocon CS2", "status": "present", "badge": "Hoạt động" }
+        ]
+      }
+    ]
+  },
+  "projectMilestones": {
+    "projectName": "Hệ thống Cổng Thông tin & Quản lý Học vụ LHU Campus",
+    "course": "Đồ án Chuyên ngành Kỹ thuật Phần mềm (SE401)",
+    "instructor": "ThS. Trần Quang Huy",
+    "finalDefenseDate": "2026-11-15T08:00:00",
+    "milestones": [
+      {
+        "id": "ms-1",
+        "title": "Mốc 1: Nộp Đề cương Chi tiết & Phân tích Yêu cầu",
+        "deadline": "15/09/2026",
+        "status": "submitted",
+        "statusText": "Đã nộp",
+        "submittedUrl": "https://github.com/lhucampus/spec-document",
+        "submittedAt": "14/09/2026 21:30",
+        "grade": "9.5/10",
+        "feedback": "Phân tích yêu cầu chức năng và phi chức năng rất bài bản, đáp ứng chuẩn kiểm định ABET."
+      },
+      {
+        "id": "ms-2",
+        "title": "Mốc 2: Thiết kế Kiến trúc Hệ thống & UI/UX Figma",
+        "deadline": "05/10/2026",
+        "status": "submitted",
+        "statusText": "Đã nộp",
+        "submittedUrl": "https://figma.com/@lhucampus/prototype",
+        "submittedAt": "04/10/2026 18:45",
+        "grade": "9.0/10",
+        "feedback": "Giao diện hiện đại, bảng màu LHU chuẩn nhận diện, responsive tốt."
+      },
+      {
+        "id": "ms-3",
+        "title": "Mốc 3: Báo cáo Tiến độ 50% & Demo Chức năng Cốt lõi",
+        "deadline": "25/10/2026",
+        "status": "pending",
+        "statusText": "Chưa nộp",
+        "submittedUrl": "",
+        "submittedAt": "",
+        "grade": "",
+        "feedback": "Cần nộp link GitHub repo mã nguồn và video demo chức năng giỏ môn học, tính GPA."
+      },
+      {
+        "id": "ms-4",
+        "title": "Mốc 4: Hoàn thiện Toàn bộ Source Code & Kiểm thử Unit Test",
+        "deadline": "05/11/2026",
+        "status": "pending",
+        "statusText": "Chưa nộp",
+        "submittedUrl": "",
+        "submittedAt": "",
+        "grade": "",
+        "feedback": "Yêu cầu coverage kiểm thử đạt trên 80%."
+      },
+      {
+        "id": "ms-5",
+        "title": "Mốc 5: Báo cáo Nghiệm thu & Bảo vệ Trước Hội đồng Khoa CNTT",
+        "deadline": "15/11/2026",
+        "status": "pending",
+        "statusText": "Chưa nộp",
+        "submittedUrl": "",
+        "submittedAt": "",
+        "grade": "",
+        "feedback": "Báo cáo trực tiếp tại Hội đồng bảo vệ Cơ sở 1."
+      }
+    ]
+  },
+  "financialData": {
+    "semester": "Học kỳ 1 (Năm học 2026 - 2027)",
+    "paymentDeadline": "2026-11-10",
+    "creditUnitPrice": 520000,
+    "studentGpa": 3.58,
+    "studentTrainingPoints": 92,
+    "currentScholarship": {
+      "tier": "Học bổng Giỏi",
+      "discountPercent": 75,
+      "badge": "Đạt loại Giỏi (Giảm 75% học phí)",
+      "requirementGpa": "GPA >= 3.20",
+      "requirementDrl": "ĐRL >= 80"
+    },
+    "scholarshipTiers": [
+      {
+        "id": "tier-xuatsac",
+        "title": "Học bổng Xuất Sắc",
+        "discount": 100,
+        "discountLabel": "Miễn 100% Học Phí",
+        "condition": "GPA >= 3.60 & ĐRL >= 90",
+        "isCurrent": false,
+        "badgeColor": "badge-accent"
+      },
+      {
+        "id": "tier-gioi",
+        "title": "Học bổng Giỏi",
+        "discount": 75,
+        "discountLabel": "Giảm 75% Học Phí",
+        "condition": "GPA >= 3.20 & ĐRL >= 80",
+        "isCurrent": true,
+        "badgeColor": "badge-success"
+      },
+      {
+        "id": "tier-kha",
+        "title": "Học bổng Khá",
+        "discount": 50,
+        "discountLabel": "Giảm 50% Học Phí",
+        "condition": "GPA >= 2.50 & ĐRL >= 70",
+        "isCurrent": false,
+        "badgeColor": "badge-info"
+      }
+    ],
+    "invoicedCourses": [
+      { "id": "inv-01", "code": "IT305", "name": "Lập trình Web Nâng Cao & Cloud", "credits": 3, "unitPrice": 520000, "total": 1560000, "selected": true },
+      { "id": "inv-02", "code": "IT412", "name": "Trí tuệ Nhân tạo & Deep Learning", "credits": 4, "unitPrice": 520000, "total": 2080000, "selected": true },
+      { "id": "inv-03", "code": "IT320", "name": "Kiến trúc & Thiết kế Phần mềm", "credits": 3, "unitPrice": 520000, "total": 1560000, "selected": true },
+      { "id": "inv-04", "code": "BA201", "name": "Khởi nghiệp Đổi mới Sáng tạo", "credits": 2, "unitPrice": 480000, "total": 960000, "selected": true },
+      { "id": "inv-05", "code": "EN203", "name": "Tiếng Anh Giao tiếp Chuyên nghiệp", "credits": 3, "unitPrice": 480000, "total": 1440000, "selected": true }
+    ]
   },
   "upcomingClasses": [
     {
@@ -213,6 +450,7 @@ window.CAMPUS_MOCK_DATA = {
       "lecturer": "ThS. Trần Quang Huy",
       "semester": "HK1 (2026-2027)",
       "schedule": "Thứ 2 (Tiết 1-4) - Lab 402 CS2",
+      "prerequisite": "IT201",
       "slots": "45/50",
       "rating": 4.9
     },
@@ -228,6 +466,7 @@ window.CAMPUS_MOCK_DATA = {
       "lecturer": "TS. Hoàng Đức Long",
       "semester": "HK1 (2026-2027)",
       "schedule": "Thứ 3 (Tiết 6-9) - Lab AI CS1",
+      "prerequisite": "IT102",
       "slots": "38/40",
       "rating": 5.0
     },
@@ -243,6 +482,7 @@ window.CAMPUS_MOCK_DATA = {
       "lecturer": "ThS. Lê Thị Mai Phương",
       "semester": "HK1 (2026-2027)",
       "schedule": "Thứ 5 (Tiết 1-4) - B205 CS2",
+      "prerequisite": "IT301",
       "slots": "48/50",
       "rating": 4.8
     },
@@ -258,6 +498,7 @@ window.CAMPUS_MOCK_DATA = {
       "lecturer": "TS. Nguyễn Minh Hải",
       "semester": "HK1 (2026-2027)",
       "schedule": "Thứ 6 (Tiết 7-9) - Hội trường CS1",
+      "prerequisite": "Không có",
       "slots": "70/80",
       "rating": 4.7
     },
@@ -273,6 +514,7 @@ window.CAMPUS_MOCK_DATA = {
       "lecturer": "PGS.TS. Phạm Văn Toàn",
       "semester": "HK1 (2026-2027)",
       "schedule": "Thứ 4 (Tiết 1-5) - Xưởng Robocon CS2",
+      "prerequisite": "IT101",
       "slots": "28/30",
       "rating": 4.95
     },
@@ -288,6 +530,7 @@ window.CAMPUS_MOCK_DATA = {
       "lecturer": "DS.CKII. Vũ Thị Thanh",
       "semester": "HK1 (2026-2027)",
       "schedule": "Thứ 7 (Tiết 2-5) - CS Dược Long Bình",
+      "prerequisite": "PH201",
       "slots": "40/45",
       "rating": 4.85
     },
@@ -303,6 +546,7 @@ window.CAMPUS_MOCK_DATA = {
       "lecturer": "ThS. Michael Anderson",
       "semester": "HK1 (2026-2027)",
       "schedule": "Thứ 3 (Tiết 1-4) - C401 CS1",
+      "prerequisite": "EN101",
       "slots": "32/35",
       "rating": 4.9
     },
@@ -318,8 +562,25 @@ window.CAMPUS_MOCK_DATA = {
       "lecturer": "ThS. Đặng Hữu Thành",
       "semester": "HK1 (2026-2027)",
       "schedule": "Thứ 7 (Tiết 6-9) - Lab Mạng CS2",
+      "prerequisite": "IT205",
       "slots": "35/40",
       "rating": 4.75
+    },
+    {
+      "id": "crs-09",
+      "code": "SE401",
+      "name": "Đồ án Chuyên ngành Kỹ thuật Phần mềm",
+      "faculty": "CNTT",
+      "facultyName": "Khoa Công nghệ Thông tin",
+      "credits": 4,
+      "type": "Bắt buộc",
+      "pricePerCredit": 520000,
+      "lecturer": "ThS. Trần Quang Huy",
+      "semester": "HK1 (2026-2027)",
+      "schedule": "Thứ 7 (Tiết 1-4) - Hội đồng CS1",
+      "prerequisite": "IT320",
+      "slots": "25/30",
+      "rating": 5.0
     }
   ],
   "clubs": [
@@ -375,24 +636,19 @@ window.CAMPUS_MOCK_DATA = {
       "answer": "Điểm rèn luyện (ĐRL) được chấm trên thang 100 điểm với 5 tiêu chí: Ý thức học tập (tối đa 20đ), Nội quy - Quy chế (tối đa 25đ), Hoạt động Đoàn - Hội - Thể thao (tối đa 20đ), Quan hệ công dân - Phục vụ cộng đồng (tối đa 25đ), và Khen thưởng thành tích (tối đa 10đ).\nĐRL ảnh hưởng trực tiếp đến xét Học bổng, Bằng tốt nghiệp và danh hiệu Sinh viên 5 Tốt."
     },
     {
-      "keywords": ["rút môn", "rút học phần", "hủy môn", "bỏ môn"],
-      "question": "Làm thế nào để rút bớt học phần đã đăng ký?",
-      "answer": "Sinh viên được phép rút học phần trong vòng 14 ngày (2 tuần) đầu tiên kể từ khi học kỳ bắt đầu. Thao tác trên cổng sinh viên trực tuyến mục 'Đăng ký học phần > Rút môn'. Học phần rút sẽ mang điểm 'W' và không tính vào điểm trung bình tích lũy."
+      "keywords": ["rút môn", "rút học phần", "hủy môn", "bỏ môn", "quá 25"],
+      "question": "Giới hạn tín chỉ đăng ký mỗi học kỳ là bao nhiêu?",
+      "answer": "Quy chế Đại học Lạc Hồng quy định:\n- Khối lượng tối thiểu: 14 tín chỉ/học kỳ chính.\n- Khối lượng tối đa cho phép: 24-25 tín chỉ/học kỳ. Hệ thống Cổng đăng ký sẽ tự động chặn và cảnh báo nếu bạn chọn vượt quá 25 tín chỉ để đảm bảo chất lượng học tập."
     },
     {
-      "keywords": ["chuẩn đầu ra", "toeic", "mos", "tin học", "ngoại ngữ"],
-      "question": "Chuẩn đầu ra Ngoại ngữ và Tin học khi tốt nghiệp LHU?",
-      "answer": "Quy định tốt nghiệp LHU yêu cầu: \n1) Chuẩn Ngoại ngữ: Chứng chỉ Quốc tế TOEIC 500+ (khối Kỹ thuật & Kinh tế) hoặc IELTS 5.5+.\n2) Chuẩn Tin học: Đạt chứng chỉ MOS 3 môn (Word, Excel, PowerPoint) từ 700/1000 điểm trở lên.\n3) Chứng chỉ 4 chuyên đề Kỹ năng mềm bắt buộc."
+      "keywords": ["chuyên cần", "điểm danh", "vắng", "nghỉ học", "cấm thi"],
+      "question": "Nghỉ bao nhiêu phần trăm số buổi thì bị cấm thi?",
+      "answer": "Theo Quy chế Đào tạo LHU: Sinh viên phải tham dự tối thiểu 80% thời lượng của môn học. Nếu vắng quá 20% tổng số buổi (dù có phép hay không có phép) sinh viên sẽ bị cấm thi kết thúc học phần và nhận điểm 0 cho kỳ thi đó."
     },
     {
-      "keywords": ["gpa", "tính điểm gpa", "thang điểm 4", "thang điểm 10"],
-      "question": "Cách quy đổi điểm từ thang 10 sang thang 4 tại LHU?",
-      "answer": "Quy đổi chuẩn: \n* Điểm A (8.5 - 10.0) = 4.0\n* Điểm B+ (8.0 - 8.4) = 3.5\n* Điểm B (7.0 - 7.9) = 3.0\n* Điểm C+ (6.5 - 6.9) = 2.5\n* Điểm C (5.5 - 6.4) = 2.0\n* Điểm D+ (5.0 - 5.4) = 1.5\n* Điểm D (4.0 - 4.9) = 1.0\n* Điểm F (< 4.0) = 0.0 (Học lại).\nGPA được tính bằng: Tổng (Điểm hệ 4 x Số tín chỉ) / Tổng số tín chỉ."
-    },
-    {
-      "keywords": ["robocon", "clb robocon", "tham gia robocon", "chế tạo robot"],
-      "question": "Muốn tham gia Đội tuyển LHU Robocon cần chuẩn bị những gì?",
-      "answer": "Đại học Lạc Hồng chào đón tất cả tân sinh viên đam mê công nghệ tham gia CLB Robocon LHU! Bạn có thể chọn 1 trong 3 mảng: Cơ khí thiết kế 3D, Mạch điện tử & Cảm biến, hoặc Lập trình điều khiển nhúng (C/C++, ROS, AI). Tuyển thành viên vào đầu mỗi năm học tại Xưởng Robocon Cơ sở 2."
+      "keywords": ["đồ án", "tiến độ", "mốc báo cáo", "hạn nộp"],
+      "question": "Quy trình nộp báo cáo đồ án chuyên ngành?",
+      "answer": "Sinh viên thực hiện nộp link tài liệu/source code theo từng mốc (Đề cương, Thiết kế, Demo 50%, Final Code). Cần kiểm tra định dạng URL (GitHub, Figma, Drive) trước khi nhấn nộp. Hệ thống đếm ngược sẽ hiển thị thời gian còn lại đến ngày bảo vệ."
     }
   ]
 };

@@ -1,0 +1,757 @@
+/* ===================================================
+   LHU CAMPUS - STUDENT PORTAL SUBSYSTEMS STYLES
+   1. The Learning Path (Pure CSS Bar Chart & Progress)
+   2. Smart Enrollment (Data-* Attributes & 25 Credits Cart)
+   3. Attendance Tracker (Timetable & 20% Absence Alert)
+   4. Project Milestone (Timeline with ::before/::after & Countdown)
+   5. Financial Hub (Tuition Table, Scholarship Cards & Formula)
+   =================================================== */
+
+/* ---------------------------------------------------
+   SUBSYSTEM 1: THE LEARNING PATH & PURE CSS BAR CHART
+   --------------------------------------------------- */
+.learning-path-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Pure CSS Bar Chart */
+.chart-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.css-bar-chart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 240px;
+  padding: 1.5rem 1rem 0;
+  position: relative;
+  border-bottom: 2px solid var(--border-color);
+  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 47px,
+    var(--border-color) 48px
+  );
+}
+
+.bar-col-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.bar-col {
+  width: 100%;
+  max-width: 42px;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.bar-col:hover {
+  filter: brightness(1.15);
+  transform: scaleY(1.03);
+}
+
+.bar-tooltip {
+  position: absolute;
+  top: -38px;
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+  font-size: 0.75rem;
+  font-weight: 700;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+}
+
+.bar-col:hover .bar-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bar-label {
+  margin-top: 0.65rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Status Color Variations for GPA */
+.bar-gpa-gold { background: linear-gradient(180deg, #10b981 0%, #059669 100%); }
+.bar-gpa-blue { background: linear-gradient(180deg, #0284c7 0%, var(--primary) 100%); }
+.bar-gpa-warning { background: linear-gradient(180deg, #fbbf24 0%, #f59e0b 100%); }
+.bar-gpa-danger { background: linear-gradient(180deg, #f87171 0%, #ef4444 100%); animation: pulse-alert 2s infinite; }
+
+@keyframes pulse-alert {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Pure CSS Curriculum Progress Bars */
+.curriculum-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.overall-progress-box {
+  background: linear-gradient(135deg, rgba(11, 59, 96, 0.08), rgba(255, 107, 0, 0.08));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+}
+
+.curriculum-bar-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.curriculum-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.pure-css-progress {
+  width: 100%;
+  height: 10px;
+  background-color: var(--bg-muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.pure-css-progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 1s ease-in-out;
+}
+
+/* Dynamic status cards */
+.gpa-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.gpa-status-badge.status-danger {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.gpa-status-badge.status-success {
+  background: var(--success-soft);
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+/* ---------------------------------------------------
+   SUBSYSTEM 2: SMART ENROLLMENT (DATA-* & 25 CREDITS LIMIT)
+   --------------------------------------------------- */
+.enrollment-alert-banner {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.08), rgba(245, 158, 11, 0.08));
+  border: 1.5px solid var(--warning);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+}
+
+.enrollment-alert-banner.alert-exceeded {
+  border-color: var(--danger);
+  background: var(--danger-soft);
+  color: var(--danger);
+  font-weight: 700;
+}
+
+.course-card-smart {
+  background-color: var(--bg-surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.course-card-smart:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.course-card-smart.is-selected {
+  border-color: var(--accent);
+  background: rgba(255, 107, 0, 0.03);
+}
+
+.course-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.course-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.course-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--border-color);
+}
+
+/* Selected Courses Table */
+.selected-cart-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+.selected-cart-table th {
+  background: var(--bg-muted);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.selected-cart-table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+/* ---------------------------------------------------
+   SUBSYSTEM 3: ATTENDANCE TRACKER & TIMETABLE
+   --------------------------------------------------- */
+.attendance-header-bar {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.week-navigation-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.week-label {
+  font-family: 'Lexend', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+[data-theme="dark"] .week-label {
+  color: #38bdf8;
+}
+
+/* 20% Absence Alert Banner */
+.absence-warning-banner {
+  background: linear-gradient(90deg, #ef4444 0%, #b91c1c 100%);
+  color: #ffffff;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.35);
+  animation: fadeIn 0.4s ease;
+}
+
+.absence-warning-banner i {
+  font-size: 1.75rem;
+}
+
+.absence-warning-title {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.2rem;
+}
+
+.absence-warning-desc {
+  font-size: 0.825rem;
+  color: #fee2e2;
+  line-height: 1.4;
+}
+
+/* Timetable CSS Grid / Table */
+.timetable-wrapper {
+  overflow-x: auto;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.timetable-wrapper.switching {
+  opacity: 0.4;
+  transform: scale(0.99);
+}
+
+.timetable-grid-custom {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(170px, 1fr));
+  gap: 1rem;
+}
+
+.day-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.day-column-header {
+  background: var(--bg-muted);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.day-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.day-subdate {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.session-box {
+  background-color: var(--bg-page);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-height: 135px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+}
+
+.session-box:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-2px);
+}
+
+.session-period {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.session-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.session-location {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: auto;
+}
+
+/* Attendance toggle state pills */
+.attendance-toggle-pill {
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  width: fit-content;
+  user-select: none;
+}
+
+.attendance-toggle-pill.status-present {
+  background: var(--success-soft);
+  color: var(--success);
+}
+
+.attendance-toggle-pill.status-absent {
+  background: var(--danger-soft);
+  color: var(--danger);
+}
+
+.attendance-toggle-pill.status-excused {
+  background: var(--warning-soft);
+  color: var(--warning);
+}
+
+/* ---------------------------------------------------
+   SUBSYSTEM 4: PROJECT MILESTONE & TIMELINE
+   --------------------------------------------------- */
+.milestone-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* Countdown Card */
+.countdown-card {
+  background: linear-gradient(135deg, #062138, #0b3b60);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  color: #ffffff;
+  box-shadow: var(--shadow-lg);
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.countdown-timer-group {
+  display: flex;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.countdown-box {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  min-width: 65px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.countdown-val {
+  font-family: 'Lexend', sans-serif;
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.countdown-lbl {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: #cbd5e1;
+  margin-top: 0.25rem;
+}
+
+/* Nested Timeline with CSS ::before and ::after */
+.timeline-vertical {
+  position: relative;
+  padding: 1rem 0 1rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* CSS Pseudo-element ::before for connecting line */
+.timeline-vertical::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 15px;
+  width: 3px;
+  background: linear-gradient(180deg, var(--accent) 0%, var(--primary) 70%, var(--border-color) 100%);
+  border-radius: var(--radius-full);
+}
+
+.timeline-step-item {
+  position: relative;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition-fast);
+}
+
+.timeline-step-item:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary);
+  transform: translateX(4px);
+}
+
+/* CSS Pseudo-element ::after for circle checkpoint */
+.timeline-step-item::after {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: -2.35rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--bg-surface);
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 0 4px var(--primary-soft);
+  transition: all var(--transition-fast);
+}
+
+.timeline-step-item.is-done::after {
+  background-color: var(--success);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px var(--success-soft);
+}
+
+.timeline-step-item.is-pending::after {
+  background-color: var(--accent);
+  border-color: #ffffff;
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.step-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.step-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+}
+
+.step-submission-box {
+  background: var(--bg-muted);
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.85rem;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ---------------------------------------------------
+   SUBSYSTEM 5: FINANCIAL HUB (FEES & SCHOLARSHIPS)
+   --------------------------------------------------- */
+.financial-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.scholarship-card {
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.scholarship-card.is-qualified {
+  border-color: var(--accent);
+  background: linear-gradient(180deg, rgba(255, 107, 0, 0.04) 0%, var(--bg-surface) 100%);
+  box-shadow: var(--shadow-md);
+}
+
+.qualified-badge-strip {
+  position: absolute;
+  top: -12px;
+  right: 1.5rem;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 10px rgba(255, 107, 0, 0.4);
+}
+
+.scholarship-rate {
+  font-family: 'Lexend', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin: 0.75rem 0 0.4rem;
+}
+
+[data-theme="dark"] .scholarship-rate {
+  color: #38bdf8;
+}
+
+/* Tuition Invoicing Table */
+.invoice-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 1.25rem 0;
+}
+
+.invoice-table th {
+  background-color: var(--bg-muted);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--text-secondary);
+  font-weight: 700;
+}
+
+.invoice-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+  vertical-align: middle;
+}
+
+.invoice-summary-bar {
+  background: var(--bg-muted);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  border: 1px solid var(--border-color);
+}
+
+.financial-calc-formula {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+.financial-final-amount {
+  font-family: 'Lexend', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+/* Responsive Portal Subsystems */
+@media (max-width: 1024px) {
+  .learning-path-grid,
+  .milestone-container {
+    grid-template-columns: 1fr;
+  }
+  .financial-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .css-bar-chart {
+    height: 180px;
+    gap: 0.35rem;
+  }
+  .timetable-grid-custom {
+    grid-template-columns: 1fr;
+  }
+  .invoice-summary-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
