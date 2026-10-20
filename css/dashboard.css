@@ -1,0 +1,761 @@
+/* ===================================================
+   LHU CAMPUS - DASHBOARD & LANDING PAGE STYLES
+   =================================================== */
+
+/* Hero Banner & Image Slider */
+.hero-section {
+  position: relative;
+  padding: 1.5rem 0 2.5rem;
+  overflow: hidden;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+  background-color: #06192a;
+}
+
+.slider-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.slide {
+  position: relative;
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.78);
+}
+
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 59, 96, 0.2) 0%, rgba(6, 25, 42, 0.85) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 3rem;
+}
+
+.slide-content {
+  max-width: 680px;
+  color: #ffffff;
+  animation: fadeIn 0.8s ease;
+}
+
+.slide-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: var(--accent);
+  color: #ffffff;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.slide-title {
+  font-size: 2.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.slide-description {
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.slide-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Slider Controls */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all var(--transition-fast);
+}
+
+.slider-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn.prev { left: 1.5rem; }
+.slider-btn.next { right: 1.5rem; }
+
+.slider-dots {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 2.5rem;
+  display: flex;
+  gap: 0.6rem;
+  z-index: 10;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.slider-dot.active {
+  width: 32px;
+  background: var(--accent);
+}
+
+/* Welcome & AI Insight Strip */
+.welcome-strip {
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, rgba(11, 59, 96, 0.06), rgba(255, 107, 0, 0.08));
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.welcome-info {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.welcome-avatar-wrap {
+  position: relative;
+}
+
+.welcome-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--bg-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.welcome-online-dot {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  background-color: var(--success);
+  border: 2px solid var(--bg-surface);
+  border-radius: 50%;
+}
+
+.welcome-text h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.welcome-text p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.ai-recommendation-pill {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-xs);
+}
+
+.ai-recommendation-pill i {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+/* ===================================================
+   DASHBOARD KPI WIDGETS GRID (CSS GRID)
+   =================================================== */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.widget-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.widget-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(11, 59, 96, 0.3);
+}
+
+.widget-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.widget-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.widget-icon.gpa { background: var(--primary-soft); color: var(--primary); }
+[data-theme="dark"] .widget-icon.gpa { color: #38bdf8; }
+.widget-icon.credits { background: var(--accent-soft); color: var(--accent); }
+.widget-icon.schedule { background: var(--info-soft); color: var(--info); }
+.widget-icon.tasks { background: var(--success-soft); color: var(--success); }
+
+.widget-label {
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.widget-main-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.widget-number {
+  font-family: 'Lexend', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.widget-subtext {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.widget-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: var(--bg-muted);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.widget-progress-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 1s ease-in-out;
+}
+
+.progress-gpa { background: linear-gradient(90deg, var(--primary), #0284c7); }
+.progress-credits { background: linear-gradient(90deg, #ff9800, var(--accent)); }
+.progress-tasks { background: linear-gradient(90deg, #10b981, #059669); }
+
+.widget-detail-text {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Specific styling for Class & Deadline Widgets */
+.class-snippet {
+  margin-top: 0.25rem;
+}
+
+.class-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
+}
+
+.class-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.class-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.class-meta i {
+  color: var(--accent);
+  width: 14px;
+}
+
+/* Deadline item */
+.deadline-snippet {
+  margin-top: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.deadline-title {
+  font-size: 0.925rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.deadline-time-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--danger);
+  background: var(--danger-soft);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-xs);
+  width: fit-content;
+}
+
+/* ===================================================
+   QUICK NAVIGATION SHORTCUTS
+   =================================================== */
+.shortcuts-section {
+  margin-bottom: 3.5rem;
+}
+
+.shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.shortcut-item {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  box-shadow: var(--shadow-xs);
+}
+
+.shortcut-item:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+}
+
+.shortcut-icon-box {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  transition: all var(--transition-fast);
+}
+
+.shortcut-item:hover .shortcut-icon-box {
+  transform: scale(1.1);
+}
+
+.shortcut-item:nth-child(1) .shortcut-icon-box { background: rgba(11, 59, 96, 0.1); color: var(--primary); }
+.shortcut-item:nth-child(2) .shortcut-icon-box { background: rgba(255, 107, 0, 0.12); color: var(--accent); }
+.shortcut-item:nth-child(3) .shortcut-icon-box { background: rgba(16, 185, 129, 0.12); color: var(--success); }
+.shortcut-item:nth-child(4) .shortcut-icon-box { background: rgba(59, 130, 246, 0.12); color: var(--info); }
+.shortcut-item:nth-child(5) .shortcut-icon-box { background: rgba(168, 85, 247, 0.12); color: #a855f7; }
+.shortcut-item:nth-child(6) .shortcut-icon-box { background: rgba(236, 72, 153, 0.12); color: #ec4899; }
+
+.shortcut-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+/* ===================================================
+   CAMPUS NEWS & ANNOUNCEMENTS SECTION
+   =================================================== */
+.news-section {
+  margin-bottom: 3.5rem;
+}
+
+.news-filter-bar {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-chip {
+  padding: 0.45rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.filter-chip.active, .filter-chip:hover {
+  background-color: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.news-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(11, 59, 96, 0.25);
+}
+
+.news-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+}
+
+.news-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.news-card:hover .news-img {
+  transform: scale(1.06);
+}
+
+.news-category-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(11, 59, 96, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.news-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 0.65rem;
+}
+
+.news-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 0.65rem;
+  color: var(--text-primary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-summary {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border-color);
+  font-size: 0.8rem;
+}
+
+.news-readmore {
+  color: var(--accent);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.news-readmore:hover {
+  gap: 0.5rem;
+}
+
+/* ===================================================
+   FEATURED CLUBS SECTION (CLB SINH VIÊN)
+   =================================================== */
+.clubs-section {
+  margin-bottom: 4rem;
+}
+
+.clubs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.club-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-normal);
+}
+
+.club-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.club-banner {
+  position: relative;
+  height: 160px;
+}
+
+.club-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.club-category-pill {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
+  color: #ffffff;
+  font-size: 0.725rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-full);
+}
+
+.club-body {
+  padding: 1.35rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.club-name {
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.club-tagline {
+  font-size: 0.825rem;
+  font-style: italic;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.club-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.club-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1.25rem;
+}
+
+.club-tag {
+  background-color: var(--bg-muted);
+  font-size: 0.725rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: var(--radius-xs);
+  color: var(--text-secondary);
+}
+
+.club-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.club-members {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN FOR DASHBOARD
+   =================================================== */
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shortcuts-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .slider-container {
+    height: 380px;
+  }
+  .slide-overlay {
+    padding: 1.5rem;
+  }
+  .slide-title {
+    font-size: 1.45rem;
+  }
+  .slide-description {
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+  .shortcuts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+  .clubs-grid {
+    grid-template-columns: 1fr;
+  }
+  .welcome-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}

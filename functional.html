@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LHU Campus - Tra Cứu Quy Chế Học Vụ, Đăng Ký Học Phần & Tính GPA</title>
+  <meta name="description" content="Trung tâm Học vụ Sinh viên LHU Campus: Tra cứu quy định đào tạo tín chỉ, đăng ký học phần và tính điểm GPA 4.0 tự động.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/functional.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-bar" aria-label="Thông báo nhanh">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="top-bar-item"><i class="fa-solid fa-phone"></i> Hotline Phòng Đào tạo: <strong>0251.3952.144</strong></span>
+        <span class="top-bar-item"><i class="fa-solid fa-envelope"></i> daotao@lhu.edu.vn</span>
+        <span class="weather-badge" id="weatherStatus"><i class="fa-solid fa-cloud-sun"></i> Biên Hòa, Đồng Nai: 29°C</span>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item"><i class="fa-solid fa-calendar-check"></i> Học kỳ 1 (2026 - 2027)</span>
+        <a href="index.html" class="top-bar-link"><i class="fa-solid fa-house"></i> Về Dashboard</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Bar -->
+  <header class="navbar" role="banner">
+    <div class="container navbar-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Về trang chủ LHU Campus">
+        <div class="brand-icon-box">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name">LHU <span>CAMPUS</span></span>
+          <span class="brand-slogan">Đại học Lạc Hồng • Đồng Nai</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu" role="navigation" aria-label="Điều hướng chính">
+        <a href="index.html" class="nav-link">
+          <i class="fa-solid fa-house"></i> Trang Chủ
+        </a>
+        <a href="functional.html" class="nav-link active">
+          <i class="fa-solid fa-compass"></i> Học Vụ & Quy Chế
+        </a>
+        <a href="functional.html?tab=tab-calculator" class="nav-link">
+          <i class="fa-solid fa-calculator"></i> Tính Điểm GPA
+        </a>
+        <a href="profile.html" class="nav-link">
+          <i class="fa-solid fa-user-gear"></i> Hồ Sơ & Cài Đặt
+        </a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" aria-label="Chuyển đổi giao diện sáng/tối" title="Chuyển chế độ Sáng / Tối">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- User Profile Pill -->
+        <a href="profile.html" class="nav-user-pill" title="Xem thông tin sinh viên">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar sinh viên" class="nav-user-avatar">
+          <div class="nav-user-info">
+            <span class="nav-user-name">Nguyễn Văn An</span>
+            <span class="nav-user-role">MSSV: 22DTH0124</span>
+          </div>
+        </a>
+
+        <!-- Mobile Toggle Hamburger Button -->
+        <button class="mobile-toggle" aria-label="Mở menu di động">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Menu di động">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <div class="brand-icon-box" style="width: 36px; height: 36px; font-size: 1.1rem;">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name" style="font-size: 1.15rem;">LHU <span>CAMPUS</span></span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" aria-label="Đóng menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <nav class="mobile-drawer-menu">
+      <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Trang Chủ</a>
+      <a href="functional.html" class="nav-link active"><i class="fa-solid fa-compass"></i> Tra cứu Quy chế & Môn học</a>
+      <a href="functional.html?tab=tab-calculator" class="nav-link"><i class="fa-solid fa-calculator"></i> Công cụ Tính GPA</a>
+      <a href="profile.html" class="nav-link"><i class="fa-solid fa-user-gear"></i> Hồ Sơ & Cài Đặt</a>
+    </nav>
+  </aside>
+
+  <!-- Functional Page Header Banner -->
+  <section class="page-hero" aria-label="Tiêu đề trang học vụ">
+    <div class="container">
+      <div class="badge badge-accent" style="margin-bottom: 0.75rem;">
+        <i class="fa-solid fa-laptop-code"></i> Phân Hệ Chức Năng Sinh Viên
+      </div>
+      <h1 class="page-hero-title">Trung Tâm Học Vụ & Quản Lý Đào Tạo LHU</h1>
+      <p class="page-hero-subtitle">
+        Hệ thống tra cứu nhanh quy chế học vụ, sổ tay tân sinh viên, đăng ký học phần kèm tính toán học phí trực tiếp và bộ công cụ mô phỏng GPA thang 4 chuẩn quốc tế.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Content Body -->
+  <main class="container" style="flex: 1; padding-bottom: 4rem;">
+
+    <!-- Functional Navigation Tabs -->
+    <nav class="tab-navigation" role="tablist" aria-label="Các phân hệ chức năng">
+      <button class="tab-btn active" data-tab="tab-regulations" role="tab" aria-selected="true">
+        <i class="fa-solid fa-book-bookmark"></i> 1. Tra Cứu Quy Chế Học Vụ
+      </button>
+      <button class="tab-btn" data-tab="tab-courses" role="tab" aria-selected="false">
+        <i class="fa-solid fa-cart-flatbed-suitcase"></i> 2. Đăng Ký Môn & Máy Tính Học Phí
+      </button>
+      <button class="tab-btn" data-tab="tab-calculator" role="tab" aria-selected="false">
+        <i class="fa-solid fa-calculator"></i> 3. Công Cụ Tính GPA & Tốt Nghiệp
+      </button>
+    </nav>
+
+    <!-- ===================================================
+         TAB 1: TRA CỨU QUY CHẾ HỌC VỤ & SỔ TAY SINH VIÊN
+         =================================================== -->
+    <section class="tab-panel active" id="tab-regulations" role="tabpanel" aria-label="Tra cứu quy chế">
+      
+      <!-- Search & Filter Controls -->
+      <div class="search-filter-card">
+        <div class="search-input-group">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="regSearchInput" class="search-input" placeholder="Tìm kiếm nhanh quy chế (Ví dụ: rút môn, hoãn thi, điểm F, học bổng, TOEIC, rèn luyện...)" aria-label="Tìm kiếm quy định">
+          <i class="fa-solid fa-circle-xmark search-clear-btn" id="regSearchClear" title="Xóa từ khóa"></i>
+        </div>
+
+        <div class="filter-row">
+          <div style="font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.5rem;">
+            <i class="fa-solid fa-filter" style="color: var(--accent);"></i>
+            <span>Lọc theo nhóm danh mục:</span>
+          </div>
+
+          <select class="filter-select" id="regCategorySelect" aria-label="Chọn danh mục quy chế">
+            <option value="all">Tất cả danh mục quy chế</option>
+            <option value="dao-tao">Quy chế Đào tạo Tín chỉ</option>
+            <option value="thi-cu">Thi cử & Xử lý Điểm số</option>
+            <option value="hoc-bong">Học bổng & Miễn giảm học phí</option>
+            <option value="ren-luyen">Đánh giá Điểm rèn luyện</option>
+            <option value="chuan-dau-ra">Chuẩn đầu ra & Tốt nghiệp</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Regulations List Grid -->
+      <div class="regulations-grid" id="regulationsList">
+        <!-- Rendered dynamically by js/functional.js -->
+        <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+          <i class="fa-solid fa-spinner fa-spin" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+          <div>Đang tải kho văn bản quy định...</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===================================================
+         TAB 2: ĐĂNG KÝ MÔN HỌC & MÁY TÍNH HỌC PHÍ THỜI GIAN THỰC
+         =================================================== -->
+    <section class="tab-panel" id="tab-courses" role="tabpanel" aria-label="Đăng ký học phần">
+      
+      <!-- Filters Bar -->
+      <div class="search-filter-card">
+        <div class="search-input-group">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="courseSearchInput" class="search-input" placeholder="Tìm môn học theo tên môn hoặc mã học phần (IT305, ME210, Web, AI, Dược...)" aria-label="Tìm môn học">
+        </div>
+
+        <div class="filter-row">
+          <div class="filter-pills-wrap">
+            <select class="filter-select" id="courseFacultySelect" aria-label="Lọc theo khoa">
+              <option value="all">Tất cả các Khoa</option>
+              <option value="CNTT">Khoa Công nghệ Thông tin</option>
+              <option value="CoDien">Khoa Cơ điện - Điện tử (Robocon)</option>
+              <option value="KTe">Khoa Quản trị - Kinh tế</option>
+              <option value="Duoc">Khoa Dược</option>
+              <option value="NgonNgu">Khoa Ngôn ngữ & Văn hóa</option>
+            </select>
+
+            <select class="filter-select" id="courseTypeSelect" aria-label="Lọc theo loại môn">
+              <option value="all">Tất cả loại học phần</option>
+              <option value="Bắt buộc">Môn Bắt buộc</option>
+              <option value="Chuyên ngành">Chuyên ngành</option>
+              <option value="Tự chọn">Tự chọn tự do</option>
+            </select>
+          </div>
+
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <i class="fa-solid fa-circle-info" style="color: var(--accent);"></i> Đơn giá: 480.000đ - 600.000đ / tín chỉ
+          </div>
+        </div>
+      </div>
+
+      <!-- Course Registration Layout (Courses List + Sticky Cart) -->
+      <div class="course-registration-layout">
+        
+        <!-- Left: Course List -->
+        <div class="courses-list" id="coursesList">
+          <!-- Rendered dynamically by js/functional.js -->
+        </div>
+
+        <!-- Right: Real-time Cart & Tuition Calculator Sidebar -->
+        <aside class="registration-summary-sidebar" aria-label="Giỏ môn học và học phí">
+          <div class="summary-title">
+            <span><i class="fa-solid fa-bag-shopping" style="color: var(--accent);"></i> Môn Đã Chọn</span>
+            <span class="badge badge-primary" id="cartCreditStatus">Chưa chọn môn nào</span>
+          </div>
+
+          <!-- List of selected subjects -->
+          <div class="summary-items-list" id="selectedCoursesList">
+            <div style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 1rem;">
+              Chưa có học phần nào được chọn
+            </div>
+          </div>
+
+          <!-- Totals calculation -->
+          <div class="summary-totals">
+            <div class="summary-row">
+              <span style="color: var(--text-secondary);">Tổng số tín chỉ:</span>
+              <strong id="cartTotalCredits" style="font-size: 1.05rem;">0 TC</strong>
+            </div>
+
+            <div class="summary-row">
+              <span style="color: var(--text-secondary);">Mức tín chỉ quy định:</span>
+              <span>14 - 24 TC / kỳ</span>
+            </div>
+
+            <div class="summary-row total-fee">
+              <span>Học phí tạm tính:</span>
+              <span id="cartTotalFee">0 đ</span>
+            </div>
+          </div>
+
+          <button class="btn btn-accent" id="submitRegistrationBtn" style="width: 100%; margin-top: 0.5rem;" onclick="confirmRegistration()" disabled>
+            <i class="fa-solid fa-check"></i> Xác Nhận Đăng Ký Học Phần
+          </button>
+
+          <p style="font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; text-align: center;">
+            * Học phí thực tế được quyết định tại thời điểm nộp tiền chính thức. Được hoàn lại nếu rút môn trong 14 ngày đầu kỳ.
+          </p>
+        </aside>
+
+      </div>
+
+    </section>
+
+    <!-- ===================================================
+         TAB 3: CÔNG CỤ TÍNH ĐIỂM GPA & DỰ ĐOÁN TỐT NGHIỆP
+         =================================================== -->
+    <section class="tab-panel" id="tab-calculator" role="tabpanel" aria-label="Công cụ tính điểm GPA">
+      
+      <div class="calculator-container">
+        
+        <!-- Left: Interactive Subject Table -->
+        <div class="gpa-table-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary);">Bảng Điểm Học Phần Mô Phỏng</h3>
+              <p style="font-size: 0.85rem; color: var(--text-secondary);">Thêm hoặc chỉnh sửa môn học và số tín chỉ để tính điểm GPA học kỳ và tích lũy.</p>
+            </div>
+            <button class="btn btn-sm btn-primary" id="addSubjectRowBtn">
+              <i class="fa-solid fa-plus"></i> Thêm Môn Học Mới
+            </button>
+          </div>
+
+          <div class="table-responsive">
+            <table class="gpa-table">
+              <thead>
+                <tr>
+                  <th style="width: 45px; text-align: center;">STT</th>
+                  <th>Tên Môn Học</th>
+                  <th>Số Tín Chỉ</th>
+                  <th>Điểm Chữ (Thang 4)</th>
+                  <th style="text-align: center;">Thao Tác</th>
+                </tr>
+              </thead>
+              <tbody id="gpaTableBody">
+                <!-- Dynamically rendered rows -->
+              </tbody>
+            </table>
+          </div>
+
+          <div style="margin-top: 1rem; padding: 0.85rem; background: var(--bg-muted); border-radius: var(--radius-md); font-size: 0.8rem; color: var(--text-secondary);">
+            <strong>Quy chuẩn thang điểm LHU:</strong> A (4.0) | B+ (3.5) | B (3.0) | C+ (2.5) | C (2.0) | D+ (1.5) | D (1.0) | F (0.0 - Bị trượt).
+          </div>
+        </div>
+
+        <!-- Right: Real-time GPA Results Card -->
+        <aside class="gpa-result-card" aria-label="Kết quả tính điểm">
+          <div class="card-title">
+            <i class="fa-solid fa-chart-pie" style="color: var(--accent);"></i> Kết Quả Mô Phỏng
+          </div>
+
+          <div class="gpa-display-center">
+            <span style="font-size: 0.825rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.25rem;">GPA Hệ 4.0</span>
+            <div class="gpa-big-number" id="calcGpa4">3.58</div>
+            <div class="badge badge-primary gpa-rank-badge" id="calcRankBadge">Xếp loại: Giỏi</div>
+          </div>
+
+          <div class="gpa-meta-stats">
+            <div class="meta-stat-item">
+              <div class="meta-stat-val" id="calcGpa10">8.65</div>
+              <div class="meta-stat-lbl">GPA Hệ 10</div>
+            </div>
+            <div class="meta-stat-item">
+              <div class="meta-stat-val" id="calcTotalCredits">15 TC</div>
+              <div class="meta-stat-lbl">Tổng Tín Chỉ Kỳ Này</div>
+            </div>
+          </div>
+
+          <!-- AI Study Advisor Recommendation Box -->
+          <div class="ai-gpa-advisor">
+            <div class="ai-gpa-advisor-title">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> LHU AI Study Advisor:
+            </div>
+            <p id="calcAiAdviceText">
+              Rất tốt! Bạn đạt danh hiệu Sinh viên Giỏi. Chỉ cần đạt thêm khoảng 4 tín chỉ điểm A ở kỳ sau để nâng bằng lên hạng Xuất sắc!
+            </p>
+          </div>
+
+          <button class="btn btn-secondary" style="width: 100%;" onclick="window.print()">
+            <i class="fa-solid fa-print"></i> In Bảng Điểm Mô Phỏng
+          </button>
+        </aside>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Modal View Regulation Details & AI Summary -->
+  <div class="modal-backdrop" id="regulationModal" role="dialog" aria-modal="true" aria-labelledby="modalRegTitle">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalRegTitle">Chi tiết Quy chế Học vụ</h3>
+        <i class="fa-solid fa-xmark modal-close" onclick="closeRegulationModal()" aria-label="Đóng"></i>
+      </div>
+      <div class="modal-body" id="modalRegBody">
+        <!-- Filled dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-accent btn-sm" id="aiSummarizeBtn">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> AI Tóm Tắt Nhanh
+        </button>
+        <button class="btn btn-secondary btn-sm" onclick="closeRegulationModal()">Đóng</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-bottom">
+      <div class="footer-bottom-content">
+        <div>© 2026 <strong>LHU Campus Platform</strong>. Trường Đại học Lạc Hồng.</div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <a href="index.html" class="footer-link">Trang Chủ</a>
+          <a href="functional.html" class="footer-link">Học Vụ</a>
+          <a href="profile.html" class="footer-link">Hồ Sơ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating AI Assistant Launcher Button -->
+  <div class="ai-launcher" role="button" aria-label="Mở Trợ lý LHU Copilot" title="Trò chuyện với AI LHU Copilot">
+    <div class="ai-launcher-icon">
+      <i class="fa-solid fa-robot"></i>
+    </div>
+    <span class="ai-launcher-text">Hỏi LHU Copilot <span class="ai-status-dot"></span></span>
+  </div>
+
+  <!-- AI Chat Window Dialog -->
+  <div class="ai-chat-window" role="dialog" aria-label="Cửa sổ trò chuyện LHU Copilot">
+    <div class="ai-chat-header">
+      <div class="ai-chat-header-title">
+        <div class="ai-msg-avatar" style="background: rgba(255,255,255,0.2);"><i class="fa-solid fa-robot"></i></div>
+        <div>
+          <h4>LHU Copilot AI</h4>
+          <span style="font-size: 0.72rem; opacity: 0.85;">Trợ lý Học vụ Thông minh • Đang online</span>
+        </div>
+      </div>
+      <button class="ai-chat-close" aria-label="Đóng chat"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="ai-chat-body">
+      <div class="ai-msg bot">
+        <div class="ai-msg-avatar"><i class="fa-solid fa-robot"></i></div>
+        <div class="ai-msg-bubble">
+          Chào bạn! Mình có thể hỗ trợ giải thích rõ hơn về các điều khoản quy định học vụ hoặc tư vấn môn học trong kỳ này.
+        </div>
+      </div>
+
+      <div class="ai-chips-container">
+        <button class="ai-chip" data-query="Rút bớt học phần đã đăng ký?">📝 Cách rút môn?</button>
+        <button class="ai-chip" data-query="Xử lý khi bị điểm F?">❌ Điểm F và học lại?</button>
+        <button class="ai-chip" data-query="Điều kiện xét học bổng LHU?">🏆 Xét học bổng?</button>
+        <button class="ai-chip" data-query="Cảnh báo học vụ LHU?">⚠️ Cảnh báo học vụ?</button>
+      </div>
+    </div>
+
+    <div class="ai-chat-footer">
+      <input type="text" class="ai-chat-input" placeholder="Hỏi quy chế, học bổng, môn học..." aria-label="Nội dung câu hỏi">
+      <button class="btn btn-primary ai-chat-send" aria-label="Gửi câu hỏi" style="padding: 0.6rem 0.9rem;">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- JavaScript Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/functional.js"></script>
+  <script src="js/ai-chat.js"></script>
+</body>
+</html>

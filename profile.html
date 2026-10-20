@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LHU Campus - Hồ Sơ Sinh Viên & Cài Đặt Ứng Dụng</title>
+  <meta name="description" content="Quản lý hồ sơ cá nhân sinh viên Đại học Lạc Hồng, thiết lập giao diện và kiểm soát dữ liệu thông tin học vụ.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-bar" aria-label="Thông báo nhanh">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="top-bar-item"><i class="fa-solid fa-phone"></i> Hỗ trợ Sinh viên: <strong>0251.3952.144</strong></span>
+        <span class="weather-badge" id="weatherStatus"><i class="fa-solid fa-cloud-sun"></i> Biên Hòa, Đồng Nai: 29°C</span>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item"><i class="fa-solid fa-shield-halved"></i> Trung tâm Xác thực Dữ liệu Sinh viên</span>
+        <a href="index.html" class="top-bar-link"><i class="fa-solid fa-house"></i> Về Trang Chủ</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Bar -->
+  <header class="navbar" role="banner">
+    <div class="container navbar-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Về trang chủ LHU Campus">
+        <div class="brand-icon-box">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name">LHU <span>CAMPUS</span></span>
+          <span class="brand-slogan">Đại học Lạc Hồng • Đồng Nai</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu" role="navigation" aria-label="Điều hướng chính">
+        <a href="index.html" class="nav-link">
+          <i class="fa-solid fa-house"></i> Trang Chủ
+        </a>
+        <a href="functional.html" class="nav-link">
+          <i class="fa-solid fa-compass"></i> Học Vụ & Quy Chế
+        </a>
+        <a href="functional.html?tab=tab-calculator" class="nav-link">
+          <i class="fa-solid fa-calculator"></i> Tính Điểm GPA
+        </a>
+        <a href="profile.html" class="nav-link active">
+          <i class="fa-solid fa-user-gear"></i> Hồ Sơ & Cài Đặt
+        </a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" aria-label="Chuyển đổi giao diện sáng/tối" title="Chuyển chế độ Sáng / Tối">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- User Profile Pill -->
+        <a href="profile.html" class="nav-user-pill" title="Hồ sơ của tôi">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar sinh viên" class="nav-user-avatar">
+          <div class="nav-user-info">
+            <span class="nav-user-name">Nguyễn Văn An</span>
+            <span class="nav-user-role">MSSV: 22DTH0124</span>
+          </div>
+        </a>
+
+        <!-- Mobile Toggle Hamburger Button -->
+        <button class="mobile-toggle" aria-label="Mở menu di động">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Menu di động">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <div class="brand-icon-box" style="width: 36px; height: 36px; font-size: 1.1rem;">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name" style="font-size: 1.15rem;">LHU <span>CAMPUS</span></span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" aria-label="Đóng menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <nav class="mobile-drawer-menu">
+      <a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Trang Chủ</a>
+      <a href="functional.html" class="nav-link"><i class="fa-solid fa-compass"></i> Tra cứu Quy chế & Môn học</a>
+      <a href="functional.html?tab=tab-calculator" class="nav-link"><i class="fa-solid fa-calculator"></i> Công cụ Tính GPA</a>
+      <a href="profile.html" class="nav-link active"><i class="fa-solid fa-user-gear"></i> Hồ Sơ & Cài Đặt</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main class="container profile-container" style="flex: 1;">
+
+    <!-- 1. Profile Banner Card with Live Editable Avatar -->
+    <section class="profile-banner-card" aria-label="Thông tin tổng quan sinh viên">
+      <div class="profile-cover">
+        <div class="profile-cover-pattern"></div>
+      </div>
+      <div class="profile-banner-body">
+        
+        <div class="profile-avatar-group">
+          <div class="profile-avatar-wrapper">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80" alt="Ảnh chân dung sinh viên" class="profile-avatar-img" id="bannerAvatarImg">
+            <label for="avatarFileInput" class="avatar-upload-btn" title="Thay đổi ảnh đại diện">
+              <i class="fa-solid fa-camera"></i> Đổi ảnh
+            </label>
+            <input type="file" id="avatarFileInput" accept="image/*" style="display: none;">
+          </div>
+
+          <div class="profile-identity">
+            <h1 id="bannerStudentName">Nguyễn Văn An</h1>
+            <div class="profile-meta-tags">
+              <span class="badge badge-accent" id="bannerStudentId">MSSV: 22DTH0124</span>
+              <span class="badge badge-primary" id="bannerFaculty">Khoa Công nghệ Thông tin</span>
+              <span class="badge badge-success"><i class="fa-solid fa-circle-check"></i> Đang học chính quy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-stats-summary">
+          <div class="stat-item">
+            <div class="stat-val">3.58</div>
+            <div class="stat-lbl">GPA Hệ 4.0</div>
+          </div>
+          <div class="stat-item" style="border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); padding: 0 1.25rem;">
+            <div class="stat-val">88 / 135</div>
+            <div class="stat-lbl">Tín chỉ tích lũy</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-val" style="color: var(--accent);">92 đ</div>
+            <div class="stat-lbl">Điểm rèn luyện</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 2. Profile Content Grid (Left: HTML5 Form Validation, Right: Settings Toggles) -->
+    <div class="profile-content-grid">
+      
+      <!-- Left: Comprehensive HTML5 Form with Regex Validation -->
+      <section class="form-card" aria-label="Biểu mẫu quản lý hồ sơ">
+        <h2 class="form-section-title">
+          <i class="fa-solid fa-user-pen"></i> Chỉnh Sửa Thông Tin Cá Nhân & Học Vụ
+        </h2>
+        <p class="form-section-desc">
+          Các trường có dấu <span class="required-star">*</span> được kiểm tra tính hợp lệ tự động bằng biểu thức chính quy (Regex). Dữ liệu sẽ cập nhật ngay lập tức lên hệ thống sau khi lưu.
+        </p>
+
+        <form id="studentProfileForm" novalidate>
+          
+          <!-- Row 1: Full Name & Student ID -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inputFullName" class="form-label">
+                Họ và Tên Sinh Viên <span class="required-star">*</span>
+              </label>
+              <input type="text" id="inputFullName" class="form-control" placeholder="Ví dụ: Nguyễn Văn An" required>
+              <div class="invalid-feedback">
+                <i class="fa-solid fa-circle-exclamation"></i> Họ tên cần ít nhất 2 từ, chỉ chứa chữ cái.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputStudentId" class="form-label">
+                Mã Số Sinh Viên (MSSV) <span class="required-star">*</span>
+              </label>
+              <input type="text" id="inputStudentId" class="form-control" placeholder="Ví dụ: 22DTH0124" required>
+              <div class="invalid-feedback">
+                <i class="fa-solid fa-circle-exclamation"></i> Mã SV LHU phải bắt đầu bằng 2x và có mã ngành (VD: 22DTH0124).
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 2: Email & Phone Number -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inputEmail" class="form-label">
+                Email Sinh Viên LHU <span class="required-star">*</span>
+              </label>
+              <input type="email" id="inputEmail" class="form-control" placeholder="sinhvien@lhu.edu.vn" required>
+              <div class="invalid-feedback">
+                <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập địa chỉ email hợp lệ (ví dụ: an.nguyen22@lhu.edu.vn).
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="inputPhone" class="form-label">
+                Số Điện Thoại Liên Hệ <span class="required-star">*</span>
+              </label>
+              <input type="tel" id="inputPhone" class="form-control" placeholder="Ví dụ: 0912345678" required>
+              <div class="invalid-feedback">
+                <i class="fa-solid fa-circle-exclamation"></i> Số điện thoại VN gồm 10 chữ số, bắt đầu bằng 03, 05, 07, 08, 09.
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Date of Birth & Gender -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inputBirthDate" class="form-label">
+                Ngày Sinh (Date of Birth) <span class="required-star">*</span>
+              </label>
+              <input type="date" id="inputBirthDate" class="form-control" value="2004-05-18" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Giới Tính (Radio Input)</label>
+              <div class="radio-group">
+                <label class="custom-radio">
+                  <input type="radio" name="gender" value="Nam" checked> Nam
+                </label>
+                <label class="custom-radio">
+                  <input type="radio" name="gender" value="Nữ"> Nữ
+                </label>
+                <label class="custom-radio">
+                  <input type="radio" name="gender" value="Khác"> Khác
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 4: Faculty & Major -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inputFaculty" class="form-label">Khoa Quản Lý</label>
+              <select id="inputFaculty" class="form-control">
+                <option value="Khoa Công nghệ Thông tin">Khoa Công nghệ Thông tin</option>
+                <option value="Khoa Cơ điện - Điện tử">Khoa Cơ điện - Điện tử (Robocon)</option>
+                <option value="Khoa Quản trị - Kinh tế Quốc tế">Khoa Quản trị - Kinh tế Quốc tế</option>
+                <option value="Khoa Dược">Khoa Dược</option>
+                <option value="Khoa Ngôn ngữ & Văn hóa Quốc tế">Khoa Ngôn ngữ & Văn hóa Quốc tế</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="inputMajor" class="form-label">Chuyên Ngành Đào Tạo</label>
+              <select id="inputMajor" class="form-control">
+                <option value="Kỹ thuật Phần mềm (Software Engineering)">Kỹ thuật Phần mềm (Software Engineering)</option>
+                <option value="Trí tuệ Nhân tạo & Khoa học Dữ liệu">Trí tuệ Nhân tạo & Khoa học Dữ liệu</option>
+                <option value="An toàn & An ninh Thông tin">An toàn & An ninh Thông tin</option>
+                <option value="Tự động hóa & Kỹ thuật Robot">Tự động hóa & Kỹ thuật Robot</option>
+                <option value="Kinh doanh Quốc tế & Logistics">Kinh doanh Quốc tế & Logistics</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Row 5: Class & Permanent Address -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="inputClass" class="form-label">Lớp Sinh Hoạt</label>
+              <input type="text" id="inputClass" class="form-control" placeholder="Ví dụ: 22CT111">
+            </div>
+
+            <div class="form-group">
+              <label for="inputAddress" class="form-label">
+                Nơi Ở / Quê Quán Hiện Tại <span class="required-star">*</span>
+              </label>
+              <input type="text" id="inputAddress" class="form-control" placeholder="Ví dụ: TP. Biên Hòa, Tỉnh Đồng Nai" required>
+              <div class="invalid-feedback">
+                <i class="fa-solid fa-circle-exclamation"></i> Địa chỉ nơi ở phải có ít nhất 5 ký tự.
+              </div>
+            </div>
+          </div>
+
+          <!-- Range Slider: Mục tiêu GPA Tốt Nghiệp -->
+          <div class="form-group" style="margin-top: 0.5rem; background: var(--bg-muted); padding: 1.25rem; border-radius: var(--radius-lg); border: 1px solid var(--border-color);">
+            <div class="range-header">
+              <label for="inputGpaTarget" class="form-label" style="margin-bottom: 0;">
+                <i class="fa-solid fa-bullseye" style="color: var(--accent);"></i> Mục Tiêu Điểm GPA Tốt Nghiệp:
+              </label>
+              <span class="range-val-badge" id="gpaTargetDisplay">3.8 / 4.0</span>
+            </div>
+            <div class="range-container" style="margin-top: 0.75rem;">
+              <input type="range" id="inputGpaTarget" class="custom-range" min="2.0" max="4.0" step="0.1" value="3.8">
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
+                <span>2.0 (Trung bình)</span>
+                <span>2.5 (Khá)</span>
+                <span>3.2 (Giỏi)</span>
+                <span>3.6+ (Xuất sắc)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Checkbox Options -->
+          <div class="form-group" style="margin-top: 1rem;">
+            <label class="form-label">Đăng Ký Nhận Bản Tin Học Vụ (Checkbox Input)</label>
+            <div class="checkbox-group">
+              <label class="custom-checkbox">
+                <input type="checkbox" id="chkScholarship" checked> Nhận thông báo xét tuyển Học bổng Tài năng
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" id="chkJobFair" checked> Nhận thư mời LHU Job Fair & Ngày hội việc làm
+              </label>
+              <label class="custom-checkbox">
+                <input type="checkbox" id="chkRobocon"> Tham gia các buổi tuyển quân Robocon & AI Lab
+              </label>
+            </div>
+          </div>
+
+          <!-- Textarea: Bio & Career Objective -->
+          <div class="form-group">
+            <label for="inputBio" class="form-label">Giới Thiệu Bản Thân & Mục Tiêu Nghề Nghiệp</label>
+            <textarea id="inputBio" class="form-control" rows="3" placeholder="Chia sẻ đôi nét về mục tiêu học tập, dự án nghiên cứu hoặc định hướng sau khi tốt nghiệp tại LHU..."></textarea>
+          </div>
+
+          <!-- Action Buttons Bar -->
+          <div class="form-actions-bar">
+            <button type="reset" class="btn btn-secondary">
+              <i class="fa-solid fa-rotate-left"></i> Hoàn Tác
+            </button>
+            <button type="submit" class="btn btn-accent" id="btnSaveProfile">
+              <i class="fa-solid fa-floppy-disk"></i> Lưu Thay Đổi & Cập Nhật Hệ Thống
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- Right: Application Settings & Security Switches -->
+      <aside class="settings-sidebar" aria-label="Cài đặt hệ thống và bảo mật">
+        
+        <!-- Settings Card 1: Giao diện & Trải nghiệm -->
+        <div class="settings-card">
+          <h3 class="card-title" style="margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-sliders"></i> Cài Đặt Giao Diện
+          </h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Tùy biến hiển thị trên mọi thiết bị máy tính và điện thoại.
+          </p>
+
+          <div class="setting-toggle-item">
+            <div class="setting-toggle-info">
+              <span class="setting-toggle-title">Giao diện Tối (Dark Mode)</span>
+              <span class="setting-toggle-desc">Bảo vệ mắt khi tra cứu học vụ vào ban đêm</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="themeToggleSwitch">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="setting-toggle-item">
+            <div class="setting-toggle-info">
+              <span class="setting-toggle-title">Trợ lý LHU Copilot Nổi</span>
+              <span class="setting-toggle-desc">Luôn hiển thị nút AI hỗ trợ nhanh ở góc phải màn hình</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked id="toggleAiWidget">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Settings Card 2: Thông báo & Bảo mật -->
+        <div class="settings-card">
+          <h3 class="card-title" style="margin-bottom: 0.5rem;">
+            <i class="fa-solid fa-shield-halved"></i> Bảo Mật & Kênh Thông Báo
+          </h3>
+          <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">
+            Kiểm soát quyền riêng tư và tiếp nhận thông tin học tập.
+          </p>
+
+          <div class="setting-toggle-item">
+            <div class="setting-toggle-info">
+              <span class="setting-toggle-title">Thông báo qua Email</span>
+              <span class="setting-toggle-desc">Gửi lịch thi và kết quả điểm về email LHU</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked id="toggleNotifEmail">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="setting-toggle-item">
+            <div class="setting-toggle-info">
+              <span class="setting-toggle-title">Cảnh báo Học vụ qua SMS</span>
+              <span class="setting-toggle-desc">Nhận tin nhắn khi có nguy cơ quá hạn môn hoặc học phí</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" checked id="toggleNotifSms">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+
+          <div class="setting-toggle-item">
+            <div class="setting-toggle-info">
+              <span class="setting-toggle-title">Xác Thực 2 Lớp (2FA)</span>
+              <span class="setting-toggle-desc">Bảo vệ tài khoản sinh viên qua mã OTP Google Authenticator</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="toggleTwoFactor">
+              <span class="slider-switch"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Settings Card 3: AI Model & Engineering Note -->
+        <div class="settings-card" style="background: linear-gradient(135deg, rgba(11,59,96,0.06), rgba(255,107,0,0.08)); border-color: rgba(255,107,0,0.3);">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; color: var(--accent); font-weight: 700; font-size: 0.95rem;">
+            <i class="fa-solid fa-code"></i> AI & Web Engineering Notes
+          </div>
+          <p style="font-size: 0.825rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 0.75rem;">
+            Dự án LHU Campus được thiết kế tối ưu chuẩn mực Responsive, sử dụng CSS Grid/Flexbox và JavaScript hiện đại không phụ thuộc thư viện nặng.
+          </p>
+          <div style="font-size: 0.775rem; color: var(--text-muted); display: flex; flex-direction: column; gap: 0.35rem;">
+            <span><i class="fa-solid fa-check" style="color: var(--success);"></i> HTML5 Validation & Regex VN</span>
+            <span><i class="fa-solid fa-check" style="color: var(--success);"></i> Live LocalStorage Cross-Page Sync</span>
+            <span><i class="fa-solid fa-check" style="color: var(--success);"></i> LHU Copilot Natural Language Engine</span>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-bottom">
+      <div class="footer-bottom-content">
+        <div>© 2026 <strong>LHU Campus Platform</strong>. Trường Đại học Lạc Hồng.</div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <a href="index.html" class="footer-link">Trang Chủ</a>
+          <a href="functional.html" class="footer-link">Học Vụ</a>
+          <a href="profile.html" class="footer-link">Hồ Sơ</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating AI Assistant Launcher Button -->
+  <div class="ai-launcher" role="button" aria-label="Mở Trợ lý LHU Copilot" title="Trò chuyện với AI LHU Copilot">
+    <div class="ai-launcher-icon">
+      <i class="fa-solid fa-robot"></i>
+    </div>
+    <span class="ai-launcher-text">Hỏi LHU Copilot <span class="ai-status-dot"></span></span>
+  </div>
+
+  <!-- AI Chat Window Dialog -->
+  <div class="ai-chat-window" role="dialog" aria-label="Cửa sổ trò chuyện LHU Copilot">
+    <div class="ai-chat-header">
+      <div class="ai-chat-header-title">
+        <div class="ai-msg-avatar" style="background: rgba(255,255,255,0.2);"><i class="fa-solid fa-robot"></i></div>
+        <div>
+          <h4>LHU Copilot AI</h4>
+          <span style="font-size: 0.72rem; opacity: 0.85;">Trợ lý Học vụ Thông minh • Đang online</span>
+        </div>
+      </div>
+      <button class="ai-chat-close" aria-label="Đóng chat"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="ai-chat-body">
+      <div class="ai-msg bot">
+        <div class="ai-msg-avatar"><i class="fa-solid fa-robot"></i></div>
+        <div class="ai-msg-bubble">
+          Chào bạn! Cần hỗ trợ cập nhật hồ sơ hoặc quy chế liên quan đến bảo lưu, học lại hay thay đổi thông tin cá nhân thì cứ hỏi mình nhé!
+        </div>
+      </div>
+
+      <div class="ai-chips-container">
+        <button class="ai-chip" data-query="Thủ tục thay đổi thông tin cá nhân?">📄 Đổi thông tin cá nhân?</button>
+        <button class="ai-chip" data-query="Quy định bảo lưu kết quả học tập?">⏸️ Bảo lưu học tập?</button>
+        <button class="ai-chip" data-query="Điều kiện xét học bổng LHU?">🏆 Xét học bổng?</button>
+      </div>
+    </div>
+
+    <div class="ai-chat-footer">
+      <input type="text" class="ai-chat-input" placeholder="Hỏi quy chế, bảo lưu, học vụ..." aria-label="Nội dung câu hỏi">
+      <button class="btn btn-primary ai-chat-send" aria-label="Gửi câu hỏi" style="padding: 0.6rem 0.9rem;">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- JavaScript Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/ai-chat.js"></script>
+</body>
+</html>

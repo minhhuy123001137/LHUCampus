@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LHU Campus - Cổng Thông Tin & Quản Lý Học Vụ Sinh Viên Đại Học Lạc Hồng</title>
+  <meta name="description" content="Hệ thống Landing Page, Tra cứu Quy chế Học vụ, Đăng ký Học phần và Quản lý Sinh viên Trường Đại học Lạc Hồng (LHU Campus)">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-bar" aria-label="Thông báo nhanh">
+    <div class="container top-bar-content">
+      <div class="top-bar-left">
+        <span class="top-bar-item"><i class="fa-solid fa-phone"></i> Hotline Tuyển sinh: <strong>0251.3952.144</strong></span>
+        <span class="top-bar-item"><i class="fa-solid fa-envelope"></i> tuyensinh@lhu.edu.vn</span>
+        <span class="weather-badge" id="weatherStatus"><i class="fa-solid fa-sun-cloud"></i> Biên Hòa, Đồng Nai: 29°C</span>
+      </div>
+      <div class="top-bar-right">
+        <span class="top-bar-item"><i class="fa-solid fa-calendar-check"></i> Học kỳ 1 (2026 - 2027)</span>
+        <a href="functional.html?tab=tab-regulations" class="top-bar-link"><i class="fa-solid fa-book-bookmark"></i> Sổ tay Tân sinh viên</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Navigation Bar -->
+  <header class="navbar" role="banner">
+    <div class="container navbar-container">
+      <!-- Brand Logo -->
+      <a href="index.html" class="brand-logo" aria-label="Về trang chủ LHU Campus">
+        <div class="brand-icon-box">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name">LHU <span>CAMPUS</span></span>
+          <span class="brand-slogan">Đại học Lạc Hồng • Đồng Nai</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-menu" role="navigation" aria-label="Điều hướng chính">
+        <a href="index.html" class="nav-link active">
+          <i class="fa-solid fa-house"></i> Trang Chủ
+        </a>
+        <a href="functional.html" class="nav-link">
+          <i class="fa-solid fa-compass"></i> Học Vụ & Quy Chế
+        </a>
+        <a href="functional.html?tab=tab-calculator" class="nav-link">
+          <i class="fa-solid fa-calculator"></i> Tính Điểm GPA
+        </a>
+        <a href="profile.html" class="nav-link">
+          <i class="fa-solid fa-user-gear"></i> Hồ Sơ & Cài Đặt
+        </a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle-btn" aria-label="Chuyển đổi giao diện sáng/tối" title="Chuyển chế độ Sáng / Tối">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- User Profile Pill -->
+        <a href="profile.html" class="nav-user-pill" title="Xem thông tin sinh viên">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar sinh viên" class="nav-user-avatar">
+          <div class="nav-user-info">
+            <span class="nav-user-name">Nguyễn Văn An</span>
+            <span class="nav-user-role">MSSV: 22DTH0124</span>
+          </div>
+        </a>
+
+        <!-- Mobile Toggle Hamburger Button -->
+        <button class="mobile-toggle" aria-label="Mở menu di động">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer-overlay"></div>
+  <aside class="mobile-drawer" aria-label="Menu di động">
+    <div class="mobile-drawer-header">
+      <div class="brand-logo">
+        <div class="brand-icon-box" style="width: 36px; height: 36px; font-size: 1.1rem;">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="brand-text-group">
+          <span class="brand-name" style="font-size: 1.15rem;">LHU <span>CAMPUS</span></span>
+        </div>
+      </div>
+      <button class="drawer-close-btn" aria-label="Đóng menu"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <nav class="mobile-drawer-menu">
+      <a href="index.html" class="nav-link active"><i class="fa-solid fa-house"></i> Trang Chủ</a>
+      <a href="functional.html" class="nav-link"><i class="fa-solid fa-compass"></i> Tra cứu Quy chế & Môn học</a>
+      <a href="functional.html?tab=tab-calculator" class="nav-link"><i class="fa-solid fa-calculator"></i> Công cụ Tính GPA</a>
+      <a href="profile.html" class="nav-link"><i class="fa-solid fa-user-gear"></i> Hồ Sơ & Cài Đặt</a>
+    </nav>
+
+    <div style="margin-top: auto; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+      <a href="profile.html" style="display: flex; align-items: center; gap: 0.75rem;">
+        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Avatar" class="nav-user-avatar" style="width: 42px; height: 42px;">
+        <div>
+          <div class="nav-user-name" style="font-size: 0.95rem;">Nguyễn Văn An</div>
+          <div class="nav-user-role">Khoa Công nghệ Thông tin</div>
+        </div>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content Container -->
+  <main class="container" style="flex: 1;">
+
+    <!-- 1. Hero Image Slider Section -->
+    <section class="hero-section" aria-label="Tiêu điểm trường">
+      <div class="slider-container">
+        <div class="slider-wrapper">
+          
+          <!-- Slide 1: Welcome Tân sinh viên -->
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1400&q=80" alt="Khuôn viên Đại học Lạc Hồng" class="slide-image">
+            <div class="slide-overlay">
+              <div class="slide-content">
+                <span class="slide-tag"><i class="fa-solid fa-sparkles"></i> Khóa Tuyển Sinh 2026</span>
+                <h1 class="slide-title">Chào Mừng Tân Sinh Viên Gia Nhập Đại Học Lạc Hồng!</h1>
+                <p class="slide-description">Khám phá môi trường đào tạo thực học - thực hành - thực danh, sở hữu cơ sở vật chất hiện đại chuẩn quốc tế và hệ sinh thái đổi mới sáng tạo hàng đầu khu vực.</p>
+                <div class="slide-actions">
+                  <a href="functional.html" class="btn btn-accent"><i class="fa-solid fa-book-open"></i> Tra Cứu Quy Chế Học Vụ</a>
+                  <button class="btn btn-secondary" onclick="window.lhuCopilot && window.lhuCopilot.openChat('Giới thiệu môi trường đào tạo LHU')">
+                    <i class="fa-solid fa-robot"></i> Hỏi LHU Copilot AI
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2: Robocon Champions -->
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1400&q=80" alt="LHU Robocon" class="slide-image">
+            <div class="slide-overlay">
+              <div class="slide-content">
+                <span class="slide-tag" style="background-color: #0284c7;"><i class="fa-solid fa-trophy"></i> Tự Hào LHU</span>
+                <h2 class="slide-title">Cái Nôi Robocon: 9 Lần Vô Địch ABU Robocon Châu Á</h2>
+                <p class="slide-description">Sinh viên LHU thỏa sức sáng tạo công nghệ, chế tạo robot tự động, lập trình AI và đại diện Việt Nam tranh tài trên đấu trường quốc tế.</p>
+                <div class="slide-actions">
+                  <a href="#clubsSection" class="btn btn-accent"><i class="fa-solid fa-users"></i> Khám Phá CLB Robocon</a>
+                  <a href="functional.html?tab=tab-courses" class="btn btn-secondary"><i class="fa-solid fa-microchip"></i> Ngành Kỹ Thuật Điều Khiển</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3: Smart Portal & GPA Calculator -->
+          <div class="slide">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="Sinh viên Lạc Hồng học tập" class="slide-image">
+            <div class="slide-overlay">
+              <div class="slide-content">
+                <span class="slide-tag" style="background-color: #10b981;"><i class="fa-solid fa-chart-line"></i> Quản Lý Học Tập</span>
+                <h2 class="slide-title">Hệ Thống Đăng Ký Tín Chỉ & Mô Phỏng Điểm GPA Tự Động</h2>
+                <p class="slide-description">Dễ dàng theo dõi tiến độ đào tạo, ước tính học phí học kỳ, phân tích kết quả rèn luyện và xây dựng lộ trình tốt nghiệp loại Giỏi - Xuất sắc.</p>
+                <div class="slide-actions">
+                  <a href="functional.html?tab=tab-calculator" class="btn btn-primary"><i class="fa-solid fa-calculator"></i> Tính Điểm GPA Ngay</a>
+                  <a href="profile.html" class="btn btn-secondary"><i class="fa-solid fa-user-pen"></i> Cập Nhật Hồ Sơ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Slider Arrow Navigation -->
+        <button class="slider-btn prev" aria-label="Slide trước"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-btn next" aria-label="Slide kế tiếp"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <!-- Slider Dot Indicators -->
+        <div class="slider-dots"></div>
+      </div>
+    </section>
+
+    <!-- 2. Student Welcome & AI Daily Insight Strip -->
+    <section class="welcome-strip" aria-label="Chào mừng sinh viên">
+      <div class="welcome-info">
+        <div class="welcome-avatar-wrap">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Sinh viên" class="welcome-avatar" id="welcomeStudentAvatar">
+          <div class="welcome-online-dot"></div>
+        </div>
+        <div class="welcome-text">
+          <h2>Xin chào, <span id="welcomeStudentName">Nguyễn Văn An</span>! 👋</h2>
+          <p id="welcomeStudentMajor">Khoa Công nghệ Thông tin • Lớp 22CT111 • Niên khóa 2022 - 2026</p>
+        </div>
+      </div>
+      <div class="ai-recommendation-pill">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span><strong>LHU AI Gợi ý:</strong> Hôm nay bạn có tiết lúc 07:30 tại Lab 402 CS2. Nhớ nộp Báo cáo Web trước 23:59 nhé!</span>
+      </div>
+    </section>
+
+    <!-- 3. Dashboard KPI Widgets Grid (CSS Grid loaded dynamically via JavaScript JSON) -->
+    <section class="dashboard-grid" aria-label="Các thẻ tóm tắt học vụ">
+      
+      <!-- Card 1: GPA Hiện Tại -->
+      <div class="widget-card">
+        <div class="widget-top">
+          <span class="widget-label">Điểm GPA Tích Lũy</span>
+          <div class="widget-icon gpa"><i class="fa-solid fa-star"></i></div>
+        </div>
+        <div class="widget-main-stat">
+          <span class="widget-number" id="statGpa">3.58</span>
+          <span class="widget-subtext">/ 4.00</span>
+        </div>
+        <div class="widget-progress-bar">
+          <div class="widget-progress-fill progress-gpa" id="gpaProgressFill" style="width: 0%;"></div>
+        </div>
+        <div class="widget-detail-text">
+          <span id="statGpaRank" style="font-weight: 700; color: var(--primary);">Học lực: Giỏi</span>
+          <a href="functional.html?tab=tab-calculator" style="color: var(--accent); font-weight: 600;">Mô phỏng <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Card 2: Tín Chỉ Đã Tích Lũy -->
+      <div class="widget-card">
+        <div class="widget-top">
+          <span class="widget-label">Tiến Độ Tín Chỉ</span>
+          <div class="widget-icon credits"><i class="fa-solid fa-graduation-cap"></i></div>
+        </div>
+        <div class="widget-main-stat">
+          <span class="widget-number" id="statCredits">88</span>
+          <span class="widget-subtext" id="statCreditsTotal">/ 135 TC</span>
+        </div>
+        <div class="widget-progress-bar">
+          <div class="widget-progress-fill progress-credits" id="creditsProgressFill" style="width: 0%;"></div>
+        </div>
+        <div class="widget-detail-text">
+          <span>Đã hoàn thành 65.2%</span>
+          <span style="color: var(--accent); font-weight: 600;">Còn 47 TC</span>
+        </div>
+      </div>
+
+      <!-- Card 3: Môn Học Sắp Tới Hôm Nay -->
+      <div class="widget-card">
+        <div class="widget-top">
+          <span class="widget-label">Lịch Học Gần Nhất</span>
+          <div class="widget-icon schedule"><i class="fa-solid fa-calendar-day"></i></div>
+        </div>
+        <div id="upcomingClassWidget">
+          <!-- Populated from JSON -->
+          <div style="color: var(--text-muted); font-size: 0.85rem;">Đang tải lịch học...</div>
+        </div>
+        <div class="widget-detail-text" style="margin-top: 0.75rem;">
+          <span class="badge badge-info"><i class="fa-solid fa-circle-dot"></i> Đang diễn ra</span>
+          <a href="functional.html?tab=tab-courses" style="color: var(--primary); font-weight: 600;">Xem TKB</a>
+        </div>
+      </div>
+
+      <!-- Card 4: Deadline & Bài Tập Gần Nhất -->
+      <div class="widget-card">
+        <div class="widget-top">
+          <span class="widget-label">Deadline Bài Tập</span>
+          <div class="widget-icon tasks"><i class="fa-solid fa-bell"></i></div>
+        </div>
+        <div id="deadlinesWidget">
+          <!-- Populated from JSON -->
+          <div style="color: var(--text-muted); font-size: 0.85rem;">Đang tải hạn nộp...</div>
+        </div>
+        <div class="widget-detail-text" style="margin-top: 0.75rem;">
+          <span style="font-size: 0.75rem; color: var(--text-muted);">ĐRL Học kỳ: <strong id="statTrainingPoints">92</strong> đ (<span id="statTrainingRank">Xuất sắc</span>)</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 4. Quick Navigation Shortcuts Grid (Phím tắt điều hướng nhanh) -->
+    <section class="shortcuts-section" aria-label="Phím tắt điều hướng nhanh">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-bolt"></i> Phím Tắt Nhanh</span>
+        <h2 class="section-title">Bàn Làm Việc Sinh Viên (Student Hub)</h2>
+        <p class="section-desc">Truy cập tức thì các tính năng học vụ cốt lõi, công cụ hỗ trợ và thông tin quy chế dành cho sinh viên LHU.</p>
+      </div>
+
+      <div class="shortcuts-grid">
+        <!-- Shortcut 1: Tra cứu quy chế -->
+        <a href="functional.html?tab=tab-regulations" class="shortcut-item">
+          <div class="shortcut-icon-box">
+            <i class="fa-solid fa-book-bookmark"></i>
+          </div>
+          <span class="shortcut-title">Tra Cứu Quy Chế Học Vụ</span>
+        </a>
+
+        <!-- Shortcut 2: Đăng ký môn học -->
+        <a href="functional.html?tab=tab-courses" class="shortcut-item">
+          <div class="shortcut-icon-box">
+            <i class="fa-solid fa-clipboard-list"></i>
+          </div>
+          <span class="shortcut-title">Đăng Ký Học Phần</span>
+        </a>
+
+        <!-- Shortcut 3: Tính GPA -->
+        <a href="functional.html?tab=tab-calculator" class="shortcut-item">
+          <div class="shortcut-icon-box">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+          <span class="shortcut-title">Mô Phỏng Điểm GPA</span>
+        </a>
+
+        <!-- Shortcut 4: Hồ sơ sinh viên -->
+        <a href="profile.html" class="shortcut-item">
+          <div class="shortcut-icon-box">
+            <i class="fa-solid fa-id-card"></i>
+          </div>
+          <span class="shortcut-title">Cập Nhật Hồ Sơ</span>
+        </a>
+
+        <!-- Shortcut 5: Câu lạc bộ -->
+        <a href="#clubsSection" class="shortcut-item">
+          <div class="shortcut-icon-box">
+            <i class="fa-solid fa-users-gear"></i>
+          </div>
+          <span class="shortcut-title">Câu Lạc Bộ LHU</span>
+        </a>
+
+        <!-- Shortcut 6: Hỏi AI Copilot -->
+        <a href="javascript:void(0)" class="shortcut-item" onclick="window.lhuCopilot && window.lhuCopilot.openChat()">
+          <div class="shortcut-icon-box">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <span class="shortcut-title">Trợ Lý AI Copilot</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5. Latest Campus News & Announcements (JSON-driven with live filter chips) -->
+    <section class="news-section" aria-label="Bản tin và thông báo">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-newspaper"></i> Thông Báo & Tin Tức</span>
+        <h2 class="section-title">Bản Tin Sinh Viên LHU Mới Nhất</h2>
+        <p class="section-desc">Cập nhật liên tục các quyết định học vụ, học bổng khuyến khích học tập và các sự kiện khoa học công nghệ của trường.</p>
+      </div>
+
+      <!-- Filter Chips -->
+      <div class="news-filter-bar">
+        <button class="filter-chip active" data-filter="all"><i class="fa-solid fa-layer-group"></i> Tất cả</button>
+        <button class="filter-chip" data-filter="học bổng"><i class="fa-solid fa-award"></i> Học bổng & Khen thưởng</button>
+        <button class="filter-chip" data-filter="công nghệ"><i class="fa-solid fa-microchip"></i> Khoa học & Công nghệ</button>
+        <button class="filter-chip" data-filter="việc làm"><i class="fa-solid fa-briefcase"></i> Cơ hội Việc làm</button>
+        <button class="filter-chip" data-filter="quy chế"><i class="fa-solid fa-scale-balanced"></i> Quy chế Học vụ</button>
+      </div>
+
+      <!-- News Grid Container -->
+      <div class="news-grid" id="newsGrid">
+        <!-- Rendered dynamically via js/dashboard.js -->
+        <div style="grid-column: 1/-1; text-align: center; padding: 2rem; color: var(--text-muted);">
+          <i class="fa-solid fa-spinner fa-spin" style="font-size: 1.5rem; margin-bottom: 0.5rem;"></i>
+          <div>Đang tải tin tức học vụ...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Featured Student Clubs Showcase -->
+    <section class="clubs-section" id="clubsSection" aria-label="Câu lạc bộ sinh viên">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-people-group"></i> Hoạt Động Ngoại Khóa</span>
+        <h2 class="section-title">Hệ Sinh Thái Câu Lạc Bộ Sinh Viên LHU</h2>
+        <p class="section-desc">Nơi tân sinh viên phát triển kỹ năng mềm, giao lưu kết bạn và tiếp nối truyền thống Robocon vô địch châu Á của trường Đại học Lạc Hồng.</p>
+      </div>
+
+      <div class="clubs-grid" id="clubsGrid">
+        <!-- Rendered dynamically via js/dashboard.js -->
+      </div>
+    </section>
+
+    <!-- 7. AI Technology & Innovation Banner -->
+    <section style="margin-bottom: 4rem; background: linear-gradient(135deg, #062138, #0b3b60); border-radius: var(--radius-xl); padding: 2.5rem; color: #ffffff; position: relative; overflow: hidden; box-shadow: var(--shadow-lg);">
+      <div style="position: absolute; right: -20px; bottom: -20px; font-size: 12rem; opacity: 0.05; pointer-events: none;">
+        <i class="fa-solid fa-microchip"></i>
+      </div>
+      <div style="max-width: 700px; position: relative; z-index: 1;">
+        <div class="footer-ai-badge" style="margin-bottom: 1rem;">
+          <i class="fa-solid fa-microchip"></i> Ứng Dụng Trí Tuệ Nhân Tạo (AI Powered)
+        </div>
+        <h2 style="font-size: 1.85rem; font-weight: 800; color: #ffffff; margin-bottom: 0.75rem;">
+          Tích Hợp Trợ Lý Ảo LHU Copilot Hỗ Trợ 24/7
+        </h2>
+        <p style="font-size: 0.95rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 1.5rem;">
+          Hệ thống website áp dụng công nghệ AI trong việc hỗ trợ sinh viên tra cứu quy chế đào tạo tín chỉ, tư vấn học bổng tự động, tóm tắt nội dung văn bản học vụ và tối ưu hóa trải nghiệm giao diện người dùng.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <button class="btn btn-accent" onclick="window.lhuCopilot && window.lhuCopilot.openChat('Điều kiện xét học bổng LHU?')">
+            <i class="fa-solid fa-comments"></i> Trải Nghiệm LHU Copilot Ngay
+          </button>
+          <a href="functional.html" class="btn btn-secondary" style="background: rgba(255,255,255,0.15); color: #ffffff; border-color: rgba(255,255,255,0.3);">
+            <i class="fa-solid fa-list-check"></i> Xem Tính Năng Học Vụ
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-top">
+      <div class="footer-grid">
+        
+        <!-- Col 1: University Info -->
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 0.5rem;">
+            <div class="brand-icon-box">
+              <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <div class="brand-text-group">
+              <span class="brand-name" style="color: #ffffff;">LHU <span>CAMPUS</span></span>
+              <span class="brand-slogan" style="color: #94a3b8;">Trường Đại học Lạc Hồng</span>
+            </div>
+          </div>
+          <p class="footer-brand-desc">
+            Trường Đại học Lạc Hồng - Cơ sở giáo dục đại học đạt chuẩn kiểm định chất lượng giáo dục quốc tế AUN-QA và ABET của Hoa Kỳ. Đào tạo nguồn nhân lực chất lượng cao gắn liền với nhu cầu doanh nghiệp.
+          </p>
+          <div class="footer-campuses">
+            <div class="footer-campus-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span><strong>Cơ sở 1 (Trụ sở chính):</strong> Số 10 Huỳnh Văn Nghệ, P. Bửu Long, TP. Biên Hòa, Đồng Nai</span>
+            </div>
+            <div class="footer-campus-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span><strong>Cơ sở 2 (Kỹ thuật & Robocon):</strong> Đường Bửu Long, P. Bửu Long, TP. Biên Hòa, Đồng Nai</span>
+            </div>
+            <div class="footer-campus-item">
+              <i class="fa-solid fa-location-dot"></i>
+              <span><strong>Cơ sở Dược học:</strong> Đường Lê Thoa, P. Tân Tiến, TP. Biên Hòa, Đồng Nai</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div class="footer-col">
+          <h4>Phân Hệ Học Vụ</h4>
+          <div class="footer-links">
+            <a href="index.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Dashboard Sinh viên</a>
+            <a href="functional.html?tab=tab-regulations" class="footer-link"><i class="fa-solid fa-angle-right"></i> Quy chế Đào tạo Tín chỉ</a>
+            <a href="functional.html?tab=tab-courses" class="footer-link"><i class="fa-solid fa-angle-right"></i> Đăng ký Học phần HK1</a>
+            <a href="functional.html?tab=tab-calculator" class="footer-link"><i class="fa-solid fa-angle-right"></i> Công cụ Mô phỏng GPA</a>
+            <a href="profile.html" class="footer-link"><i class="fa-solid fa-angle-right"></i> Hồ sơ & Thiết lập</a>
+          </div>
+        </div>
+
+        <!-- Col 3: Student Services -->
+        <div class="footer-col">
+          <h4>Hỗ Trợ Sinh Viên</h4>
+          <div class="footer-links">
+            <a href="javascript:void(0)" onclick="window.lhuCopilot && window.lhuCopilot.openChat('Điều kiện xét học bổng')" class="footer-link"><i class="fa-solid fa-angle-right"></i> Quỹ Học bổng Tài năng</a>
+            <a href="javascript:void(0)" onclick="window.lhuCopilot && window.lhuCopilot.openChat('Quy định điểm rèn luyện')" class="footer-link"><i class="fa-solid fa-angle-right"></i> Chấm Điểm Rèn Luyện</a>
+            <a href="javascript:void(0)" onclick="window.lhuCopilot && window.lhuCopilot.openChat('Chuẩn đầu ra TOEIC')" class="footer-link"><i class="fa-solid fa-angle-right"></i> Chuẩn Ngoại ngữ & Tin học</a>
+            <a href="#clubsSection" class="footer-link"><i class="fa-solid fa-angle-right"></i> Câu lạc bộ Robocon LHU</a>
+            <a href="https://lhu.edu.vn" target="_blank" rel="noopener noreferrer" class="footer-link"><i class="fa-solid fa-angle-right"></i> Cổng thông tin LHU.edu.vn</a>
+          </div>
+        </div>
+
+        <!-- Col 4: Contact & Socials -->
+        <div class="footer-col">
+          <h4>Kết Nối Với LHU</h4>
+          <p style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 1rem;">
+            Theo dõi fanpage và các kênh truyền thông chính thức của Đại học Lạc Hồng để không bỏ lỡ các tin tức học bổng và sự kiện:
+          </p>
+          <div class="footer-socials">
+            <a href="https://facebook.com/lhunews" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook LHU"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://youtube.com/@lhutv" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="YouTube LHU"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://tiktok.com/@lhu.edu.vn" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TikTok LHU"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://linkedin.com/school/lac-hong-university" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn LHU"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+          <div style="margin-top: 1.5rem;">
+            <div class="footer-ai-badge">
+              <i class="fa-solid fa-shield-halved"></i> Bảo mật chuẩn SSL 256-bit
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <div>
+          © 2026 <strong>LHU Campus Platform</strong>. Bản quyền thuộc về Trường Đại học Lạc Hồng.
+        </div>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <span>Phát triển bởi Kỹ sư Thiết kế Web LHU</span>
+          <span class="footer-ai-badge"><i class="fa-solid fa-brain"></i> AI Code & UX Optimized</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating AI Assistant Launcher Button -->
+  <div class="ai-launcher" role="button" aria-label="Mở Trợ lý LHU Copilot" title="Trò chuyện với AI LHU Copilot">
+    <div class="ai-launcher-icon">
+      <i class="fa-solid fa-robot"></i>
+    </div>
+    <span class="ai-launcher-text">Hỏi LHU Copilot <span class="ai-status-dot"></span></span>
+  </div>
+
+  <!-- AI Chat Window Dialog -->
+  <div class="ai-chat-window" role="dialog" aria-label="Cửa sổ trò chuyện LHU Copilot">
+    <div class="ai-chat-header">
+      <div class="ai-chat-header-title">
+        <div class="ai-msg-avatar" style="background: rgba(255,255,255,0.2);"><i class="fa-solid fa-robot"></i></div>
+        <div>
+          <h4>LHU Copilot AI</h4>
+          <span style="font-size: 0.72rem; opacity: 0.85;">Trợ lý Học vụ Thông minh • Đang online</span>
+        </div>
+      </div>
+      <button class="ai-chat-close" aria-label="Đóng chat"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="ai-chat-body">
+      <!-- Bot Welcome -->
+      <div class="ai-msg bot">
+        <div class="ai-msg-avatar"><i class="fa-solid fa-robot"></i></div>
+        <div class="ai-msg-bubble">
+          Chào bạn! Mình là <strong>LHU Copilot</strong>. Bạn có thể hỏi mình bất cứ điều gì về:
+          • Quy chế đào tạo tín chỉ & điểm thi
+          • Tiêu chuẩn xét học bổng LHU
+          • Cách tính điểm rèn luyện & điểm GPA
+          • Đăng ký môn học & Câu lạc bộ Robocon!
+        </div>
+      </div>
+
+      <!-- Quick Chips -->
+      <div class="ai-chips-container">
+        <button class="ai-chip" data-query="Điều kiện xét học bổng LHU?">🏆 Xét học bổng?</button>
+        <button class="ai-chip" data-query="Cách tính điểm rèn luyện?">⭐ Điểm rèn luyện?</button>
+        <button class="ai-chip" data-query="Chuẩn đầu ra Ngoại ngữ và Tin học?">🎓 Chuẩn đầu ra?</button>
+        <button class="ai-chip" data-query="Cách tính điểm GPA thang 4?">📊 Cách tính GPA?</button>
+        <button class="ai-chip" data-query="Tham gia CLB Robocon LHU?">🤖 CLB Robocon?</button>
+      </div>
+    </div>
+
+    <div class="ai-chat-footer">
+      <input type="text" class="ai-chat-input" placeholder="Hỏi quy chế, học bổng, môn học..." aria-label="Nội dung câu hỏi">
+      <button class="btn btn-primary ai-chat-send" aria-label="Gửi câu hỏi" style="padding: 0.6rem 0.9rem;">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" aria-live="polite"></div>
+
+  <!-- JavaScript Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/ai-chat.js"></script>
+</body>
+</html>
